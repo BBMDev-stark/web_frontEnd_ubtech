@@ -4,8 +4,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
-  Trash2, Plus, Minus, ShoppingBag, ArrowRight,
-  Tag, X, Loader2, MessageCircle, Check, AlertTriangle,
+  Trash2,
+  Plus,
+  Minus,
+  ShoppingBag,
+  ArrowRight,
+  Tag,
+  X,
+  Loader2,
+  MessageCircle,
+  Check,
+  AlertTriangle,
+  Package,
 } from 'lucide-react';
 import { useCartStore } from '@/store/cart.store';
 import { useAuthStore } from '@/store/auth.store';

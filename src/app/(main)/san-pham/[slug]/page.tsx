@@ -5,9 +5,19 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  ShoppingCart, Star, Truck, Shield, MessageCircle,
-  ChevronRight, Loader2, Plus, Minus, Check,
-  AlertCircle, Send,
+  ShoppingCart,
+  Star,
+  Truck,
+  Shield,
+  MessageCircle,
+  ChevronRight,
+  Loader2,
+  Plus,
+  Minus,
+  Check,
+  AlertCircle,
+  Send,
+  Package,
 } from 'lucide-react';
 import api from '@/lib/axios';
 import { formatPrice, formatDate, getDisplayPrice } from '@/lib/utils';
