@@ -777,13 +777,13 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
       <div className="relative aspect-[4/3] rounded-3xl bg-gradient-to-br from-[#F5F7FA] to-[#EEF3FF] overflow-hidden border border-[#E4E8EF]/60 shadow-lg shadow-black/5">
         {images[idx]?.url ? (
           <Image
-            src={images[idx].url}
-            alt={`${name} - ảnh ${idx + 1}`}
-            fill
-            className="object-cover transition-opacity duration-300"
-            unoptimized
-            priority
-          />
+    src={images[idx].url}
+    alt={`${name} - ảnh ${idx + 1}`}
+    fill
+    className="object-contain p-4 transition-opacity duration-300"
+    unoptimized
+    priority
+  />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-4">
             <div className="w-20 h-20 rounded-2xl bg-[#E4E8EF] flex items-center justify-center">
