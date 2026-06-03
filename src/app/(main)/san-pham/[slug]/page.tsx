@@ -774,7 +774,7 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
   return (
     <div className="space-y-4">
       {/* Main image */}
-      <div className="relative aspect-[4/3] rounded-3xl bg-gradient-to-br from-[#F5F7FA] to-[#EEF3FF] overflow-hidden border border-[#E4E8EF]/60 shadow-lg shadow-black/5">
+      <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-[#F5F7FA] to-[#EEF3FF] overflow-hidden border border-[#E4E8EF]/60 shadow-lg shadow-black/5">
         {images[idx]?.url ? (
           <Image
     src={images[idx].url}
