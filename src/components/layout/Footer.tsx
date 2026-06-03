@@ -70,7 +70,7 @@ export default function Footer() {
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqfhqyaVMwIjSUwlvDADDX93fbyUNvXWGQbw&s"
               alt="UBTECH Vietnam"
               className="h-10 w-auto object-contain"
-              style={{ filter: 'brightness(10) saturate(0)' }}
+              style={{ filter: 'brightness(1.15)' }}
               onError={(e: any) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
