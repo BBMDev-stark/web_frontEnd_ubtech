@@ -54,7 +54,7 @@ const SECTIONS = [
       {
         name: 'ALPHA 1E',
         slug: 'alpha-1e',
-        img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/03/Alpha1E_01.jpg',
+        img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/03/Alpha_1E_08.png',
         tag: 'Giáo dục',
         tc: 'bg-teal-100 text-teal-700',
         desc: 'Robot hình người 16 servo, Blockly & Python. STEM K-12.',
@@ -86,7 +86,7 @@ const SECTIONS = [
       {
         name: 'WALKER S1',
         slug: 'walker-s1',
-        img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/04/WalkerS1_01.jpg',
+        img: 'https://owebsite-cdn.ubtrobot.com/resources/image/2024/10/13/600678134571077.jpg',
         tag: 'Humanoid Pro',
         tc: 'bg-slate-100 text-slate-700',
         desc: 'Humanoid 36 DoF, U-SLAM 3D, dây chuyền sản xuất EV.',
@@ -94,7 +94,7 @@ const SECTIONS = [
       {
         name: 'WALKER E',
         slug: 'walker-e',
-        img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/04/WalkerE_01.jpg',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraP9dZ-x3AfZNkIW6qGBehx1-xc0NSFkV6GRRo8Wh8xE8oTOPkagkTzXX&s=10',
         tag: 'Humanoid',
         tc: 'bg-indigo-100 text-indigo-700',
         desc: 'Humanoid thế hệ mới, nhận diện cảm xúc, dịch vụ cao cấp.',
@@ -119,7 +119,7 @@ const SECTIONS = [
       {
         name: 'COURTBOT KIT',
         slug: 'courtbot-kit',
-        img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/03/Courtbot_01.jpg',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4JQCMTFCJKEKWbn7mAZoVaLoaI3suzPT9stAtkpe3-AVrHK-1jsk6XhiF&s=10',
         tag: 'Bóng rổ',
         tc: 'bg-orange-100 text-orange-700',
         desc: 'Robot bóng rổ, 200+ linh kiện, vật lý + toán học + lập trình.',
