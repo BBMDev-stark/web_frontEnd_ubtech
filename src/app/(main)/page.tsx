@@ -50,9 +50,9 @@ const COMMERCIAL_SOLUTIONS = [
 ];
 
 const AIC_IMAGES = [
-  'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/04/AIC-03-1024x724.jpg',
-  'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/04/AIC-01-1024x725.jpg',
-  'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/04/AIC-26-1024x724.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSudFY2lXBinYnK90XdUNJpoMw9cug6-Hq07_wzlWJSzH3sTBiplunKabk&s=10',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_agV09OjQKlo2pzFCyDdv-30mnGkM1vuKt5TFiNcKacc1e-7nQbkFPGTt&s=10',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRhjlqmL--QuV1_nhp1rdB9er-hUt6RmfRAi_Rz1ILXr9CUn6x1ZQUuTZw&s=10',
 ];
 
 const PROGRAM_LEVELS = [
@@ -152,7 +152,7 @@ export default function HomePage() {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl">
             <img
-              src="https://ubtechvietnam.edu.vn/wp-content/uploads/2021/04/AIC-08.jpg"
+              src="https://www.teq.com/wp-content/uploads/2025/04/UBTech_feature_reflect_04-25.png"
               alt="Chương trình học AI Robotics UBTECH"
               className="w-full object-cover"
               style={{ maxHeight: 440 }}

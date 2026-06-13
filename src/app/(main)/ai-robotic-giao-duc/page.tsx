@@ -66,7 +66,6 @@ export default function AIRoboticGiaoDucPage() {
                 <div className="lg:col-span-2">
                   <div className="flex items-center gap-3 mb-3">
                     <div className={`px-3 py-1 rounded-full text-white text-[11px] font-bold bg-gradient-to-r ${c.color}`}>{c.level}</div>
-                    <span className="text-[12px] text-[#6B7280]">{c.age}</span>
                   </div>
                   <h3 className="text-xl font-black text-[#050E2B] mb-2">{c.kit}</h3>
                   <p className="text-[14px] text-[#4A5568] leading-relaxed mb-4">{c.desc}</p>
