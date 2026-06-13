@@ -6,7 +6,7 @@ export const metadata = { title: 'Chương trình AI & Robotics K12 | UBTECH Vi�
 const PROGRAMS = [
   {
     id: 'k1-k3',
-    level: 'K1–K3', name: 'AI FANTASY ZOO', age: '6–9 tuổi',
+    level: 'K1–K3', name: 'AI FANTASY ZOO',
     color: 'from-green-500 to-emerald-600',
     bgLight: 'bg-green-50 border-green-200',
     image: 'https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU',
@@ -17,7 +17,7 @@ const PROGRAMS = [
   },
   {
     id: 'k4-k6',
-    level: 'K4–K6', name: 'AI SMART LIFE', age: '9–12 tuổi',
+    level: 'K4–K6', name: 'AI SMART LIFE',
     color: 'from-blue-500 to-blue-600',
     bgLight: 'bg-blue-50 border-blue-200',
     image: 'https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU',
@@ -28,7 +28,7 @@ const PROGRAMS = [
   },
   {
     id: 'k7-k9',
-    level: 'K7–K9', name: 'AI TRANSFORMER WORKSHOP', age: '12–15 tuổi',
+    level: 'K7–K9', name: 'AI TRANSFORMER WORKSHOP',
     color: 'from-purple-500 to-purple-600',
     bgLight: 'bg-purple-50 border-purple-200',
     image: 'https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU',
@@ -39,7 +39,7 @@ const PROGRAMS = [
   },
   {
     id: 'k10-k12',
-    level: 'K10–K12', name: 'AI SUPER ENGINEER', age: '15–18 tuổi',
+    level: 'K10–K12', name: 'AI SUPER ENGINEER',
     color: 'from-orange-500 to-red-600',
     bgLight: 'bg-orange-50 border-orange-200',
     image: 'https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU',
