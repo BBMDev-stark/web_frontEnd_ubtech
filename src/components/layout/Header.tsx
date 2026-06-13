@@ -23,7 +23,7 @@ interface SuggestItem {
   category?: { name: string };
 }
 
-/* ─── Data: Mega menu sản phẩm (giữ nguyên) ─── */
+/* ─── Data: Mega menu sản phẩm ─── */
 const MEGA_SECTIONS = [
   {
     title: 'ROBOT DỊCH VỤ',
@@ -68,19 +68,19 @@ const MEGA_SECTIONS = [
   {
     title: 'SÁCH',
     items: [
-      { name: 'AI FANTASY ZOO ',          slug: 'sach-ai-fantasy-zoo-tap-1',          img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-FANTASY-ZOO-1.webp' },
-      { name: 'AI MAGIC WORLD',            slug: 'sach-ai-magic-world',                img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-MAGIC-WORLD-1-1.webp' },
-      { name: 'AI SMART LIFE ',           slug: 'sach-ai-smart-life-tap-1',           img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SMART-LIFE-1.webp' },
-      { name: 'AI SUPER ASSISTANT',      slug: 'sach-ai-super-assistant-tap-1',      img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-Super-Assistant-1-1.webp' },
-      { name: 'AI TRANSFORMER WORKSHOP', slug: 'sach-ai-transformer-workshop-tap-1', img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-TRANSFORMER-WORKSHOP-1.webp' },
-      { name: 'AI SUPER DESIGNER',       slug: 'sach-ai-super-designer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SUPER-DESIGNER-1.webp' },
-      { name: 'AI SUPER ENGINEER',       slug: 'sach-ai-super-engineer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SuperEngineer-1.webp' },
-      { name: 'AI APPLICATION & EXPLORATION', slug: 'ai-application-exploration-1', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcWRi5gPJBsjh6_ZZAWt_HebF84y9WusonCDc8SjKvNg&s=10' },
+      { name: 'AI FANTASY ZOO',              slug: 'sach-ai-fantasy-zoo-tap-1',          img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-FANTASY-ZOO-1.webp',                                                                                               desc: '' },
+      { name: 'AI MAGIC WORLD',              slug: 'sach-ai-magic-world',                img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-MAGIC-WORLD-1-1.webp',                                                                                             desc: '' },
+      { name: 'AI SMART LIFE',               slug: 'sach-ai-smart-life-tap-1',           img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SMART-LIFE-1.webp',                                                                                                desc: '' },
+      { name: 'AI SUPER ASSISTANT',          slug: 'sach-ai-super-assistant-tap-1',      img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-Super-Assistant-1-1.webp',                                                                                         desc: '' },
+      { name: 'AI TRANSFORMER WORKSHOP',    slug: 'sach-ai-transformer-workshop-tap-1', img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-TRANSFORMER-WORKSHOP-1.webp',                                                                                      desc: '' },
+      { name: 'AI SUPER DESIGNER',           slug: 'sach-ai-super-designer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SUPER-DESIGNER-1.webp',                                                                                            desc: '' },
+      { name: 'AI SUPER ENGINEER',           slug: 'sach-ai-super-engineer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SuperEngineer-1.webp',                                                                                             desc: '' },
+      { name: 'AI APPLICATION & EXPLORATION',slug: 'ai-application-exploration-1',       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcWRi5gPJBsjh6_ZZAWt_HebF84y9WusonCDc8SjKvNg&s=10', desc: '' },
     ],
   },
 ];
 
-/* ─── Data: Giải pháp 3 nhóm (MỚI) ─── */
+/* ─── Data: Giải pháp 3 nhóm ─── */
 const GIAI_PHAP_MENU = [
   {
     key: 'k12',
@@ -163,13 +163,13 @@ export default function Header() {
   const [showSuggest, setShowSuggest] = useState(false);
   const [mobileOpen, setMobileOpen]   = useState(false);
   const [userOpen, setUserOpen]       = useState(false);
-  const [megaOpen, setMegaOpen]       = useState(false);   // Sản phẩm mega
-  const [giaiPhapOpen, setGiaiPhapOpen] = useState(false); // Giải pháp dropdown
+  const [megaOpen, setMegaOpen]       = useState(false);
+  const [giaiPhapOpen, setGiaiPhapOpen] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
   const [scrolled, setScrolled]       = useState(false);
   const [searchOpen, setSearchOpen]   = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const [activeGiaiPhap, setActiveGiaiPhap] = useState(0); // hover tab trong giải pháp
+  const [activeGiaiPhap, setActiveGiaiPhap] = useState(0);
 
   const searchRef    = useRef<HTMLDivElement>(null);
   const userMenuRef  = useRef<HTMLDivElement>(null);
@@ -288,7 +288,7 @@ export default function Header() {
               </div>
             </form>
 
-            {/* Search suggest — không hiển thị giá */}
+            {/* Search suggest */}
             {showSuggest && suggests.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50">
                 {suggests.map(item => {
@@ -445,7 +445,7 @@ export default function Header() {
         <div className="hidden lg:block border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-11">
 
-            {/* ── 1. GIẢI PHÁP dropdown (K12 / Đại học / Doanh nghiệp) ── */}
+            {/* ── 1. GIẢI PHÁP dropdown ── */}
             <div
               ref={giaiPhapRef}
               className="relative h-full flex items-center"
@@ -648,7 +648,9 @@ export default function Header() {
                             </div>
                             <div className="text-center">
                               <p className="text-[11px] font-bold text-[#1A1F36] group-hover:text-[#0057FF] leading-tight">{item.name}</p>
-                              <p className="text-[10px] text-[#9CA3AF] mt-0.5">{item.desc}</p>
+                              {item.desc && (
+                                <p className="text-[10px] text-[#9CA3AF] mt-0.5">{item.desc}</p>
+                              )}
                             </div>
                           </Link>
                         ))}
@@ -672,7 +674,7 @@ export default function Header() {
               Dự Án
             </Link>
 
-            {/* ── 4. Plain nav (Giới Thiệu, Tin Tức) ── */}
+            {/* ── 4. Plain nav ── */}
             {PLAIN_NAV.map(item => (
               (item as any).dropdown ? (
                 <div key={item.label} className="relative group/nav">
@@ -718,7 +720,6 @@ export default function Header() {
               )
             ))}
 
-
           </div>
         </div>
 
@@ -728,7 +729,7 @@ export default function Header() {
         {mobileOpen && (
           <nav className="lg:hidden border-t border-gray-100 bg-white pb-5 pt-2 max-h-[80vh] overflow-y-auto">
 
-            {/* ── Giải pháp: 3 nhóm accordion ── */}
+            {/* ── Giải pháp accordion ── */}
             <div className="px-4">
               <button
                 onClick={() => setMobileExpanded(mobileExpanded === 'giaiphap' ? null : 'giaiphap')}
@@ -747,7 +748,6 @@ export default function Header() {
                     const Icon = gp.icon;
                     return (
                       <div key={gp.key} className="rounded-xl overflow-hidden border border-gray-100">
-                        {/* Sub-section header */}
                         <button
                           onClick={() => setMobileExpanded(mobileExpanded === `gp-${gp.key}` ? 'giaiphap' : `gp-${gp.key}`)}
                           className="flex items-center justify-between w-full px-4 py-3 bg-[#F8FAFF] hover:bg-[#EEF3FF] transition-colors"
@@ -824,7 +824,9 @@ export default function Header() {
                         >
                           <img src={item.img} alt={item.name} className="w-6 h-6 object-contain rounded" />
                           <span className="flex-1">{item.name}</span>
-                          <span className="text-[10px] text-[#9CA3AF]">{item.desc}</span>
+                          {item.desc && (
+                            <span className="text-[10px] text-[#9CA3AF]">{item.desc}</span>
+                          )}
                         </Link>
                       ))}
                     </div>
