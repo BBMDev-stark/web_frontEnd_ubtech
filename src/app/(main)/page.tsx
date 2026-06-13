@@ -58,7 +58,7 @@ const AIC_IMAGES = [
 const PROGRAM_LEVELS = [
   { level: 'K1–K3', name: 'AI Fantasy Zoo', age: '6–9 tuổi', desc: 'Khám phá AI qua mô hình động vật, học lập trình cơ bản Blockly', color: 'bg-green-50 border-green-200', badge: 'bg-green-100 text-green-700', img: 'https://isavn.edu.vn/upload/1757745207_Screenshot-2024-03-02-160449.png' },
   { level: 'K4–K6', name: 'AI Smart Life', age: '9–12 tuổi', desc: 'Cảm biến IoT, dự án thùng rác thông minh, khu vườn tự động', color: 'bg-blue-50 border-blue-200', badge: 'bg-blue-100 text-blue-700', img: 'https://bizmovn.com/wp-content/uploads/2026/01/AI-Smart-Life-1-Sach-hoc-sinh-lop-3.jpg' },
-  { level: 'K7–K9', name: 'AI Transformer', age: '12–15 tuổi', desc: 'Điện tử nâng cao, hệ thống cảnh báo thông minh, robot tấn công', color: 'bg-purple-50 border-purple-200', badge: 'bg-purple-100 text-purple-700', img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/04/Book_Transformer_Workshop_06.png' },
+  { level: 'K7–K9', name: 'AI Transformer', age: '12–15 tuổi', desc: 'Điện tử nâng cao, hệ thống cảnh báo thông minh, robot tấn công', color: 'bg-purple-50 border-purple-200', badge: 'bg-purple-100 text-purple-700', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplGFOruLs8CUmYn5WJM1U6nlfQT8muFAepZlUo00vg&s=10' },
   { level: 'K10–K12', name: 'AI Super Engineer', age: '15–18 tuổi', desc: 'Nghiên cứu khoa học AI, dự án nông nghiệp & công nghiệp', color: 'bg-orange-50 border-orange-200', badge: 'bg-orange-100 text-orange-700', img: 'https://vnsea.edu.vn/wp-content/uploads/2025/08/nganh-robot-va-tri-tue-nhan-tao-3.jpg' },
 ];
 
