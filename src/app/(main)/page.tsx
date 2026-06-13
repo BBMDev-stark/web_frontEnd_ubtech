@@ -288,7 +288,7 @@ export default function HomePage() {
                 <span className="text-[11px] font-bold text-[#0057FF] uppercase tracking-[0.2em] mb-2 block">SẢN PHẨM</span>
                 <h2 className="text-2xl font-black text-[#1A1F36] flex items-center gap-2.5">
                   <Star className="w-6 h-6 text-amber-400 fill-amber-400" />
-                  Nổi bật & Bán chạy
+                  AI UGOT
                 </h2>
               </div>
               <Link href="/san-pham?featured=true" className="flex items-center gap-1 text-sm text-[#0057FF] font-semibold hover:underline">
