@@ -1,10 +1,11 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
+import { useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight, Bot, Cpu, BookOpen, Shield, Truck, HeadphonesIcon, Award,
   ChevronRight, GraduationCap, CheckCircle2, Building2, MessageSquare, Phone,
-  Star, Sparkles, BadgeCheck, Microscope, Users, Zap,
+  Star, Sparkles, BadgeCheck, Microscope, Users, Zap, ChevronLeft,
 } from 'lucide-react';
 import api from '@/lib/axios';
 import ProductCard from '@/components/ui/ProductCard';
@@ -34,7 +35,13 @@ const PARTNER_LOGOS = [
   { id: '1HWWnwIfKn9hDXnFwoJdZgHqokKwNm9_x', name: 'Đối tác 15' },
   { id: '1ah4cg1FnRpiWDKkFoCoQpeZBgpnwh2wz', name: 'Đối tác 16' },
   { id: '1osQp0YZqsMDWNBFTs4KEVvXrDkGrKm2e', name: 'Đối tác 17' },
+  // ── Thêm logo mới vào đây ──
+  // { id: 'GOOGLE_DRIVE_FILE_ID', name: 'Tên đối tác' },
 ];
+
+// Chia PARTNER_LOGOS thành 2 hàng
+const ROW1 = PARTNER_LOGOS.slice(0, Math.ceil(PARTNER_LOGOS.length / 2));
+const ROW2 = PARTNER_LOGOS.slice(Math.ceil(PARTNER_LOGOS.length / 2));
 
 const FEATURED_ROBOTS = [
   { name: 'Alpha Mini', image: 'https://lh3.googleusercontent.com/d/10dpsDljzIrY9U6TeSODxbmNMrB8OUSO-', slug: 'alpha-mini', desc: 'Robot humanoid nhỏ gọn, tích hợp AI' },
@@ -63,28 +70,52 @@ const PROGRAM_LEVELS = [
 ];
 
 const NEWS_ITEMS = [
-  {
-    title: 'UBTECH XUẤT HIỆN TẠI TRIỂN LÃM ĐỔI MỚI SÁNG TẠO VIỆT NAM 2023',
-    date: 'Tháng 4, 2024',
-    excerpt: 'Cùng nhìn lại những hình ảnh nổi bật tại Triển lãm Quốc tế Đổi mới sáng tạo Việt Nam 2023 và Lễ khánh thành trung tâm NIC Hòa Lạc.',
-    image: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/NIC-1.jpg',
-    slug: 'ubtech-xuat-hien-tai-trien-lam-doi-moi-sang-tao-viet-nam-2023',
-  },
-  {
-    title: 'UBTECH TRONG NGÀY HỘI GIÁO DỤC STEM',
-    date: 'Tháng 4, 2024',
-    excerpt: 'Ngày hội giáo dục STEM quận Tân Phú thu hút gần 1.000 học sinh và giáo viên cùng trải nghiệm Robotics và AI.',
-    image: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/Picture-2.jpg',
-    slug: 'ubtech-xuat-hien-trong-ngay-hoi-giao-duc-stem',
-  },
-  {
-    title: 'CHUYỂN ĐỔI SỐ CÙNG UBTECH VIỆT NAM',
-    date: 'Tháng 4, 2024',
-    excerpt: 'Chuyển đổi số đã trở thành xu hướng không thể thiếu. UBTECH đồng hành cùng doanh nghiệp và nhà trường trong hành trình này.',
-    image: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/Chuong-trinh-chuyen-doi-so.jpg',
-    slug: 'chuyen-doi-so-cung-ubtech-viet-nam',
-  },
+  { title: 'UBTECH XUẤT HIỆN TẠI TRIỂN LÃM ĐỔI MỚI SÁNG TẠO VIỆT NAM 2023', date: 'Tháng 4, 2024', excerpt: 'Cùng nhìn lại những hình ảnh nổi bật tại Triển lãm Quốc tế Đổi mới sáng tạo Việt Nam 2023 và Lễ khánh thành trung tâm NIC Hòa Lạc.', image: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/NIC-1.jpg', slug: 'ubtech-xuat-hien-tai-trien-lam-doi-moi-sang-tao-viet-nam-2023' },
+  { title: 'UBTECH TRONG NGÀY HỘI GIÁO DỤC STEM', date: 'Tháng 4, 2024', excerpt: 'Ngày hội giáo dục STEM quận Tân Phú thu hút gần 1.000 học sinh và giáo viên cùng trải nghiệm Robotics và AI.', image: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/Picture-2.jpg', slug: 'ubtech-xuat-hien-trong-ngay-hoi-giao-duc-stem' },
+  { title: 'CHUYỂN ĐỔI SỐ CÙNG UBTECH VIỆT NAM', date: 'Tháng 4, 2024', excerpt: 'Chuyển đổi số đã trở thành xu hướng không thể thiếu. UBTECH đồng hành cùng doanh nghiệp và nhà trường trong hành trình này.', image: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/Chuong-trinh-chuyen-doi-so.jpg', slug: 'chuyen-doi-so-cung-ubtech-viet-nam' },
 ];
+
+// Component hàng logo tự scroll
+function LogoRow({ logos, direction = 1 }: { logos: typeof PARTNER_LOGOS; direction?: 1 | -1 }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const isPaused = useRef(false);
+  const animRef = useRef<number>();
+
+  const scroll = useCallback(() => {
+    const el = rowRef.current;
+    if (!el || isPaused.current) { animRef.current = requestAnimationFrame(scroll); return; }
+    el.scrollLeft += 0.7 * direction;
+    if (direction === 1 && el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft = 0;
+    if (direction === -1 && el.scrollLeft <= 0) el.scrollLeft = el.scrollWidth / 2;
+    animRef.current = requestAnimationFrame(scroll);
+  }, [direction]);
+
+  useEffect(() => {
+    animRef.current = requestAnimationFrame(scroll);
+    return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
+  }, [scroll]);
+
+  return (
+    <div
+      ref={rowRef}
+      onMouseEnter={() => { isPaused.current = true; }}
+      onMouseLeave={() => { isPaused.current = false; }}
+      className="flex items-center gap-5 overflow-x-hidden"
+      style={{ scrollbarWidth: 'none' }}
+    >
+      {[...logos, ...logos].map((logo, i) => (
+        <div key={`${logo.id}-${i}`} className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 flex-shrink-0 w-[120px] h-[72px] flex items-center justify-center hover:shadow-md hover:border-[#0057FF]/20 transition-all">
+          <img
+            src={`https://lh3.googleusercontent.com/d/${logo.id}`}
+            alt={logo.name}
+            className="max-w-full max-h-full object-contain"
+            onError={(e: any) => { e.target.parentElement.style.opacity = '0'; }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function HomePage() {
   const { data: featured = [] } = useQuery({ queryKey: ['featured'], queryFn: fetchFeatured });
@@ -208,7 +239,6 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-
           <h3 className="text-xl font-black text-[#1A1F36] mb-7 text-center">Các dòng Robot nổi bật mang công nghệ AI mới nhất</h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {FEATURED_ROBOTS.map(robot => (
@@ -236,17 +266,11 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-[#0A0F1A]">Khách hàng & Đối tác</h2>
             <p className="text-[#64748B] text-sm mt-2">Ứng dụng AI & Robotics từ UBTECH trong thực tế tại Việt Nam</p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-5">
-            {PARTNER_LOGOS.map((logo) => (
-              <div key={logo.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 w-[120px] h-[72px] flex items-center justify-center hover:shadow-md hover:border-[#0057FF]/20 transition-all">
-                <img
-                  src={`https://lh3.googleusercontent.com/d/${logo.id}`}
-                  alt={logo.name}
-                  className="max-w-full max-h-full object-contain"
-                  onError={(e: any) => { e.target.parentElement.style.display = 'none'; }}
-                />
-              </div>
-            ))}
+          <div className="flex flex-col gap-5">
+            {/* Hàng 1 — lướt sang phải */}
+            <LogoRow logos={ROW1} direction={1} />
+            {/* Hàng 2 — lướt sang trái */}
+            <LogoRow logos={ROW2} direction={-1} />
           </div>
         </div>
       </section>

@@ -68,14 +68,14 @@ const MEGA_SECTIONS = [
   {
     title: 'SÁCH',
     items: [
-      { name: 'AI FANTASY ZOO T1',     slug: 'sach-ai-fantasy-zoo-tap-1',        img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-FANTASY-ZOO-1.webp',          desc: 'Cấp 1 – Tập 1' },
-      { name: 'AI FANTASY ZOO T2',     slug: 'sach-ai-fantasy-zoo-tap-2',        img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-FANTASY-ZOO-2.webp',          desc: 'Cấp 1 – Tập 2' },
-      { name: 'AI SMART LIFE T1',      slug: 'sach-ai-smart-life-tap-1',         img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SMART-LIFE-1.webp',           desc: 'Cấp 1 – Tập 1' },
-      { name: 'AI SMART LIFE T2',      slug: 'sach-ai-smart-life-tap-2',         img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SMART-LIFE-2-1.webp',         desc: 'Cấp 1 – Tập 2' },
-      { name: 'AI TRANSFORMER WS T1',  slug: 'sach-ai-transformer-workshop-tap-1', img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-TRANSFORMER-WORKSHOP-1.webp', desc: 'Cấp 2 – Tập 1' },
-      { name: 'AI TRANSFORMER WS T2',  slug: 'sach-ai-transformer-workshop-tap-2', img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-TRANSFORMER-WORKSHOP-2.webp', desc: 'Cấp 2 – Tập 2' },
-      { name: 'AI SUPER ENGINEER T1',  slug: 'sach-ai-super-engineer-tap-1',     img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SuperEngineer-1.webp',        desc: 'Cấp 3 – Tập 1' },
-      { name: 'AI SUPER ENGINEER T2',  slug: 'sach-ai-super-engineer-tap-2',     img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-Super-Engineer-2.webp',       desc: 'Cấp 3 – Tập 2' },
+      { name: 'AI FANTASY ZOO ',          slug: 'sach-ai-fantasy-zoo-tap-1',          img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-FANTASY-ZOO-1.webp' },
+      { name: 'AI MAGIC WORLD',            slug: 'sach-ai-magic-world',                img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-MAGIC-WORLD-1-1.webp' },
+      { name: 'AI SMART LIFE ',           slug: 'sach-ai-smart-life-tap-1',           img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SMART-LIFE-1.webp' },
+      { name: 'AI SUPER ASSISTANT',      slug: 'sach-ai-super-assistant-tap-1',      img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-Super-Assistant-1-1.webp' },
+      { name: 'AI TRANSFORMER WORKSHOP', slug: 'sach-ai-transformer-workshop-tap-1', img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-TRANSFORMER-WORKSHOP-1.webp' },
+      { name: 'AI SUPER DESIGNER',       slug: 'sach-ai-super-designer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SUPER-DESIGNER-1.webp' },
+      { name: 'AI SUPER ENGINEER',       slug: 'sach-ai-super-engineer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SuperEngineer-1.webp' },
+      { name: 'AI APPLICATION & EXPLORATION', slug: 'ai-application-exploration-1', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcWRi5gPJBsjh6_ZZAWt_HebF84y9WusonCDc8SjKvNg&s=10' },
     ],
   },
 ];
