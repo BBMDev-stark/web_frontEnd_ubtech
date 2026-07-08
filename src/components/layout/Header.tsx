@@ -40,8 +40,8 @@ const MEGA_SECTIONS = [
       { name: 'ALPHA MINI', slug: 'alpha-mini',img: 'https://lh3.googleusercontent.com/d/10dpsDljzIrY9U6TeSODxbmNMrB8OUSO-', desc: 'Robot mini 14 servo' },
       { name: 'ALPHA 1E',   slug: 'alpha-1e',  img: 'https://lh3.googleusercontent.com/d/1ZQfOilItslY3d5U_NPNvVLIqeYnMFiVO', desc: 'Robot giáo dục 16 servo' },
       { name: 'AI UGOT',    slug: 'ai-ugot',   img: 'https://lh3.googleusercontent.com/d/17-nzBOR9sO5C7wtX3TQLTj0nFGD6VwQm', desc: 'Robot mô-đun AI' },
-      { name: 'WALKER S1',  slug: 'walker-s1', img: 'https://lh3.googleusercontent.com/d/1SEj7W9nXw8Axw8MUv8-z2Wk-9PhTPtpq', desc: 'Humanoid 36 DoF' },
-      { name: 'WALKER E',   slug: 'walker-e',  img: 'https://lh3.googleusercontent.com/d/10iW5rVSC6C8LJSYv-nnoMycM9Nl6iLzF', desc: 'Humanoid thế hệ mới' },
+      { name: 'WALKER S2',  slug: 'walker-s2', img: 'https://lh3.googleusercontent.com/d/1SEj7W9nXw8Axw8MUv8-z2Wk-9PhTPtpq', desc: 'Humanoid 36 DoF' },
+      { name: 'TienKung',   slug: 'TienKung',  img: 'https://www.canadasatellite.ca/pub/media/catalog/product/u/b/ubtech-walker-tienkung-embodied-intelligence-5.jpg', desc: 'Humanoid thế hệ mới' },
     ],
   },
   {
