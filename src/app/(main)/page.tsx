@@ -126,7 +126,7 @@ const PROGRAM_LEVELS = [
     desc: "Khám phá AI qua mô hình động vật, học lập trình cơ bản Blockly",
     color: "bg-green-50 border-green-200",
     badge: "bg-green-100 text-green-700",
-    img: "https://isavn.edu.vn/upload/1757745207_Screenshot-2024-03-02-160449.png",
+    img: "https://bizmovn.com/wp-content/uploads/2026/01/AI-Fantasy-Zoo-2-Sach-hoc-sinh-lop-1_5.webp",
   },
   {
     level: "K4–K6",
