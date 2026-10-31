@@ -146,7 +146,7 @@ const PLAIN_NAV = [
       { label: 'A.I. Center',   href: '/ai-center',   desc: 'Trung tâm AI Giáo Dục' },
     ],
   },
-  { label: 'Tin Tức', href: '/tin-tuc' },
+  { label: 'Tin Tức', href: 'https://cms.ubtechvietnam.edu.vn/' },
 ];
 
 /* ═══════════════════════════════════════════════════════════

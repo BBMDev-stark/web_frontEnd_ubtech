@@ -157,35 +157,6 @@ const PROGRAM_LEVELS = [
   },
 ];
 
-const NEWS_ITEMS = [
-  {
-    title: "UBTECH XUẤT HIỆN TẠI TRIỂN LÃM ĐỔI MỚI SÁNG TẠO VIỆT NAM 2023",
-    date: "Tháng 4, 2024",
-    excerpt:
-      "Cùng nhìn lại những hình ảnh nổi bật tại Triển lãm Quốc tế Đổi mới sáng tạo Việt Nam 2023 và Lễ khánh thành trung tâm NIC Hòa Lạc.",
-    image: "https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/NIC-1.jpg",
-    slug: "ubtech-xuat-hien-tai-trien-lam-doi-moi-sang-tao-viet-nam-2023",
-  },
-  {
-    title: "UBTECH TRONG NGÀY HỘI GIÁO DỤC STEM",
-    date: "Tháng 4, 2024",
-    excerpt:
-      "Ngày hội giáo dục STEM quận Tân Phú thu hút gần 1.000 học sinh và giáo viên cùng trải nghiệm Robotics và AI.",
-    image:
-      "https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/Picture-2.jpg",
-    slug: "ubtech-xuat-hien-trong-ngay-hoi-giao-duc-stem",
-  },
-  {
-    title: "CHUYỂN ĐỔI SỐ CÙNG UBTECH VIỆT NAM",
-    date: "Tháng 4, 2024",
-    excerpt:
-      "Chuyển đổi số đã trở thành xu hướng không thể thiếu. UBTECH đồng hành cùng doanh nghiệp và nhà trường trong hành trình này.",
-    image:
-      "https://ubtechvietnam.edu.vn/wp-content/uploads/2024/04/Chuong-trinh-chuyen-doi-so.jpg",
-    slug: "chuyen-doi-so-cung-ubtech-viet-nam",
-  },
-];
-
 // Component hàng logo tự scroll
 function LogoRow({
   logos,
@@ -696,43 +667,17 @@ export default function HomePage() {
               </p>
             </div>
             <Link
-              href="/tin-tuc"
+              href="https://cms.ubtechvietnam.edu.vn/"
               className="flex items-center gap-1 text-sm text-[#0057FF] font-semibold hover:underline"
             >
               Xem thêm <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-7">
-            {NEWS_ITEMS.map((news) => (
-              <Link
-                key={news.slug}
-                href={`/tin-tuc/${news.slug}`}
-                className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="aspect-[16/9] overflow-hidden bg-gray-100">
-                  <img
-                    src={news.image}
-                    alt={news.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="text-xs text-[#9CA3AF] mb-2.5 font-medium">
-                    {news.date}
-                  </p>
-                  <h3 className="font-bold text-[#1A1F36] line-clamp-2 group-hover:text-[#0057FF] transition-colors leading-snug mb-3">
-                    {news.title}
-                  </h3>
-                  <p className="text-sm text-[#6B7280] line-clamp-2 leading-relaxed">
-                    {news.excerpt}
-                  </p>
-                  <span className="text-xs text-[#0057FF] font-semibold mt-4 flex items-center gap-1">
-                    Đọc thêm <ArrowRight className="w-3 h-3" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <a href="https://cms.ubtechvietnam.edu.vn/" className="block rounded-2xl bg-blue-50 border border-blue-100 p-8 group">
+            <h3 className="text-xl font-bold text-[#1A1F36] mb-3">Khám phá tin tức UBTECH Việt Nam</h3>
+            <p className="text-gray-600 mb-5">Đọc các bài viết, sự kiện và kiến thức mới nhất về AI & Robotics.</p>
+            <span className="inline-flex items-center gap-2 font-semibold text-[#0057FF]">Đến trang tin tức <ArrowRight className="w-4 h-4" /></span>
+          </a>
         </div>
       </section>
 

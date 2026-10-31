@@ -157,7 +157,7 @@ export default function Footer() {
               ['/chuong-trinh-k12',    'Chương Trình K12'],
               ['/ai-robotic-giao-duc', 'AI Robotic Giáo Dục'],
               ['/giai-phap-robot',     'Giải Pháp Robot'],
-              ['/tin-tuc',             'Tin Tức'],
+              ['https://cms.ubtechvietnam.edu.vn/',             'Tin Tức'],
             ].map(([href, label]) => (
               <li key={href}>
                 <Link href={href} className="text-[#4A6A88] hover:text-white text-sm transition-colors block hover:translate-x-0.5 transform">
