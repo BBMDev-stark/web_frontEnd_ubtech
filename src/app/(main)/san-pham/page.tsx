@@ -1,4 +1,6 @@
 'use client';
+
+import ProductImage from '@/components/ui/ProductImage';
 import { Suspense } from 'react';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -162,10 +164,10 @@ function SolutionCard({
           {/* Image */}
           <div className="w-40 sm:w-52 flex-shrink-0 relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100">
             {hasImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <ProductImage
                 src={imageUrl}
                 alt={product.name}
+                fill
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
               />
             ) : (
@@ -205,10 +207,10 @@ function SolutionCard({
         {/* Image */}
         <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 flex-shrink-0">
           {hasImage ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <ProductImage
               src={imageUrl}
               alt={product.name}
+              fill
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
             />
           ) : (

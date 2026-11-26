@@ -1,7 +1,7 @@
 'use client';
 // src/app/(main)/dat-hang/page.tsx
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import ProductImage from '@/components/ui/ProductImage';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -281,7 +281,7 @@ export default function CheckoutPage() {
                   <div key={item._id} className="flex gap-3">
                     <div className="relative w-12 h-12 rounded-xl bg-gray-50 overflow-hidden flex-shrink-0">
                       {item.image
-                        ? <Image src={item.image} alt={item.name} fill className="object-contain p-0.5" unoptimized />
+                        ? <ProductImage src={item.image} alt={item.name} fill className="object-contain p-0.5" />
                         : <div className="w-full h-full flex items-center justify-center"><Package className="w-5 h-5 text-gray-200" /></div>}
                     </div>
                     <div className="flex-1 min-w-0">

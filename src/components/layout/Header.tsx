@@ -11,6 +11,7 @@ import {
 import { useAuthStore } from '@/store/auth.store';
 import { useCartStore } from '@/store/cart.store';
 import { cn, formatPrice } from '@/lib/utils';
+import ProductImage from '@/components/ui/ProductImage';
 import api from '@/lib/axios';
 
 const ZALO  = process.env.NEXT_PUBLIC_ZALO_PHONE || '0915594103';
@@ -301,7 +302,7 @@ export default function Header() {
                       className="flex items-center gap-3 px-4 py-3 hover:bg-[#F3F4F6] transition-colors"
                     >
                       {img ? (
-                        <img src={img.url} alt={item.name} className="w-10 h-10 object-contain rounded-lg bg-gray-50" />
+                        <ProductImage src={img.url} alt={item.name} width={40} height={40} className="w-10 h-10 object-contain rounded-lg bg-gray-50" />
                       ) : (
                         <div className="w-10 h-10 rounded-lg bg-[#EEF3FF] flex items-center justify-center">
                           <Bot className="w-5 h-5 text-[#9CA3AF]" />

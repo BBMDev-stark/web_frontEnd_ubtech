@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import Image from 'next/image';
+import ProductImage from '@/components/ui/ProductImage';
 import Link from 'next/link';
 import {
   ChevronRight,
@@ -153,14 +153,14 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
       {/* Main image */}
       <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-[#F5F7FA] to-[#EEF3FF] overflow-hidden border border-[#E4E8EF]/60 shadow-lg shadow-black/5">
         {images[idx]?.url ? (
-          <Image
-    src={images[idx].url}
-    alt={`${name} - ảnh ${idx + 1}`}
-    fill
-    className="object-contain p-4 transition-opacity duration-300"
-    unoptimized
-    priority
-  />
+          <ProductImage
+            key={images[idx].url}
+            src={images[idx].url}
+            alt={images[idx].alt || `${name} - ảnh ${idx + 1}`}
+            fill
+            className="object-contain p-4 transition-opacity duration-300"
+            priority
+          />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-4">
             <div className="w-20 h-20 rounded-2xl bg-[#E4E8EF] flex items-center justify-center">
@@ -221,7 +221,7 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
               )}
             >
               {img.url ? (
-                <Image src={img.url} alt="" fill className="object-cover" unoptimized />
+                <ProductImage src={img.url} alt="" fill className="object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
                   <Package className="w-6 h-6 text-[#C4C9D4]" />
@@ -300,7 +300,7 @@ export default function ProductDetail() {
         <section className="py-10 lg:py-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
           {/* Gallery */}
-          <ImageGallery images={images} name={product.name} />
+          <ImageGallery key={product.slug} images={images} name={product.name} />
 
           {/* Info panel */}
           <div className="space-y-8">
