@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const YT_ID = "MlUIRQkGxfY";
 const ALPHA_MINI =
-  "https://lh3.googleusercontent.com/d/10dpsDljzIrY9U6TeSODxbmNMrB8OUSO-";
+  "/images/site/alpha-mini.webp";
 
 export default function HeroApple() {
   const armRef = useRef<HTMLDivElement>(null);
@@ -107,21 +107,21 @@ export default function HeroApple() {
           {/* Background robots */}
           <div className="hap-bot hap-bot1">
             <img
-              src="https://lh3.googleusercontent.com/d/1HVhd73x_HfF1Syl-LfDMgsSgp2fgnN_L"
+              src="/images/site/yanshee.webp"
               alt="Yanshee"
             />
             <div className="hap-bot-shadow" />
           </div>
           <div className="hap-bot hap-bot3">
             <img
-              src="https://lh3.googleusercontent.com/d/12FU50aqn--4P133EitfmuPFI_Gy2n7Ew"
+              src="/images/site/cruzr.webp"
               alt="Cruzr"
             />
             <div className="hap-bot-shadow" />
           </div>
           <div className="hap-bot hap-bot4">
             <img
-              src="https://lh3.googleusercontent.com/d/1DjLRnfvrdrMHryqd6-sBJ9xQc4f1uGEz"
+              src="/images/site/adibot.webp"
               alt="Adibot"
             />
             <div className="hap-bot-shadow" />
@@ -187,12 +187,8 @@ export default function HeroApple() {
             <div className="hap-monitor">
               <div className="hap-screen" onClick={openModal}>
                 <img
-                  src={`https://img.youtube.com/vi/${YT_ID}/maxresdefault.jpg`}
+                  src="/images/site/ubtech-video-poster.webp"
                   alt="UBTECH Video"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      `https://img.youtube.com/vi/${YT_ID}/hqdefault.jpg`;
-                  }}
                 />
                 <div className="hap-screen-glare" />
                 <div className="hap-screen-hover">

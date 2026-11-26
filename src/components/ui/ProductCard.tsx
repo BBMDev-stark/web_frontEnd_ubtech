@@ -212,10 +212,10 @@
 //   );
 // }
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Package, Eye, ArrowRight, GraduationCap, Building2, School } from 'lucide-react';
-import { useState } from 'react';
+import ProductImage from '@/components/ui/ProductImage';
+import { getBundledProductImages, productImagePlaceholder } from '@/lib/catalogue-image-source';
 import { cn, getProductImage } from '@/lib/utils';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -320,7 +320,6 @@ function ImagePlaceholder({ name }: { name: string }) {
 // ─── List View ────────────────────────────────────────────────────────────────
 
 function ProductCardList({ product }: { product: Product }) {
-  const [imgError, setImgError] = useState(false);
   const image = getProductImage(product.images);
   const audience = resolveAudience(product);
   const isBook = product.category?.slug === 'sach' || (product.tags ?? []).includes('sách');
@@ -332,17 +331,16 @@ function ProductCardList({ product }: { product: Product }) {
     >
       {/* Thumbnail */}
       <div className="relative w-28 h-28 rounded-xl bg-slate-50 overflow-hidden flex-shrink-0">
-        {!imgError && image !== '/placeholder-product.png' ? (
-          <Image
+        {image !== productImagePlaceholder || getBundledProductImages(product.slug).length > 0 ? (
+          <ProductImage
             src={image}
+            productSlug={product.slug}
             alt={product.name}
             fill
             className={cn(
               'transition-transform duration-500 group-hover:scale-105',
               isBook ? 'object-cover' : 'object-contain p-2',
             )}
-            unoptimized
-            onError={() => setImgError(true)}
           />
         ) : (
           <ImagePlaceholder name={product.name} />
@@ -388,7 +386,6 @@ function ProductCardList({ product }: { product: Product }) {
 // ─── Grid View ────────────────────────────────────────────────────────────────
 
 function ProductCardGrid({ product }: { product: Product }) {
-  const [imgError, setImgError] = useState(false);
   const image = getProductImage(product.images);
   const audience = resolveAudience(product);
   const isBook = product.category?.slug === 'sach' || (product.tags ?? []).includes('sách');
@@ -405,17 +402,16 @@ function ProductCardGrid({ product }: { product: Product }) {
           isBook ? 'aspect-[3/4]' : 'aspect-[4/3]',
         )}
       >
-        {!imgError && image !== '/placeholder-product.png' ? (
-          <Image
+        {image !== productImagePlaceholder || getBundledProductImages(product.slug).length > 0 ? (
+          <ProductImage
             src={image}
+            productSlug={product.slug}
             alt={product.name}
             fill
             className={cn(
               'transition-transform duration-500 ease-out will-change-transform',
               isBook ? 'object-cover group-hover:scale-[1.03]' : 'object-contain p-5 group-hover:scale-[1.06]',
             )}
-            unoptimized
-            onError={() => setImgError(true)}
           />
         ) : (
           <ImagePlaceholder name={product.name} />

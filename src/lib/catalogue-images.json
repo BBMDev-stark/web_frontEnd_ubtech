@@ -1,0 +1,175 @@
+{
+  "paths": {
+    "scorebot-kit": [
+      "/images/products/scorebot-kit-1-9bd30e9fc8.webp",
+      "/images/products/scorebot-kit-2-5aeabd4eeb.webp",
+      "/images/products/scorebot-kit-3-8b95306308.webp",
+      "/images/products/scorebot-kit-4-af7d08400f.webp"
+    ],
+    "unicornbot-kit": [
+      "/images/products/unicornbot-kit-1-c687c47089.webp",
+      "/images/products/unicornbot-kit-2-e865a728dd.webp",
+      "/images/products/unicornbot-kit-3-050ec929aa.webp"
+    ],
+    "trackbot-kit": [
+      "/images/products/trackbot-kit-1-4e6648af44.webp"
+    ],
+    "yanshee": [
+      "/images/products/yanshee-1-bf14f3a912.webp",
+      "/images/products/yanshee-2-c4efb1f0e3.webp",
+      "/images/products/yanshee-3-5b0d49972e.webp",
+      "/images/products/yanshee-4-dafbb774f1.webp"
+    ],
+    "alpha-mini": [
+      "/images/products/alpha-mini-1-b9fd33c198.webp",
+      "/images/products/alpha-mini-2-a356ea3e25.webp"
+    ],
+    "ai-ugot": [
+      "/images/products/ai-ugot-1-ef27042c4f.webp",
+      "/images/products/ai-ugot-2-5599c9097a.webp",
+      "/images/products/ai-ugot-3-526db9cfb0.webp"
+    ],
+    "cadebot": [
+      "/images/products/cadebot-1-fe853d1d2b.webp",
+      "/images/products/cadebot-2-f640cc3b33.webp"
+    ],
+    "cruzr": [
+      "/images/products/cruzr-1-f79f169bb1.webp",
+      "/images/products/cruzr-2-8255823694.webp",
+      "/images/products/cruzr-3-dad6120b27.webp"
+    ],
+    "adibot": [
+      "/images/products/adibot-1-f96515d360.webp"
+    ],
+    "alpha-1e": [
+      "/images/products/alpha-1e-1-1e92bcc35d.webp"
+    ],
+    "walker-s2": [
+      "/images/products/walker-s2-1-871bd5f3da.webp",
+      "/images/products/walker-s2-2-0ef57a5ffb.webp",
+      "/images/products/walker-s2-3-007d4e0575.webp"
+    ],
+    "walker-tienkung": [
+      "/images/products/walker-tienkung-1-a07e6e98b9.webp",
+      "/images/products/walker-tienkung-2-434f905a65.webp"
+    ],
+    "ai-fantasy-zoo": [
+      "/images/products/ai-fantasy-zoo-1-1aeca738be.webp",
+      "/images/products/ai-fantasy-zoo-2-7c09111df8.webp"
+    ],
+    "ai-smart-life": [
+      "/images/products/ai-smart-life-1-cc1c0021a2.webp",
+      "/images/products/ai-smart-life-2-6331f47668.webp"
+    ],
+    "ai-magic-world": [
+      "/images/products/ai-magic-world-1-a986b9e4a4.webp",
+      "/images/products/ai-magic-world-2-c41fd1834f.webp"
+    ],
+    "ai-transformer-workshop": [
+      "/images/products/ai-transformer-workshop-1-2f28ce07a4.webp",
+      "/images/products/ai-transformer-workshop-2-a10f87b654.webp"
+    ],
+    "ai-super-asistant": [
+      "/images/products/ai-super-asistant-1-1e2cf3a57e.webp",
+      "/images/products/ai-super-asistant-2-af29237cf4.webp"
+    ],
+    "ai-super-engineer": [
+      "/images/products/ai-super-engineer-1-9984b83bc9.webp",
+      "/images/products/ai-super-engineer-2-1b3852f243.webp"
+    ],
+    "courtbot-kit": [
+      "/images/products/courtbot-kit-1-bcf028f8c6.webp",
+      "/images/products/courtbot-kit-2-ccfb357eb5.webp"
+    ],
+    "astrobot-kit": [
+      "/images/products/astrobot-kit-1-7ee92c239c.webp",
+      "/images/products/astrobot-kit-2-478bc697d6.webp"
+    ],
+    "ai-super-designer": [
+      "/images/products/ai-super-designer-1-2449428b7a.webp",
+      "/images/products/ai-super-designer-2-c50e160d0c.webp"
+    ],
+    "ai-fantasy-zoo-1": [
+      "/images/products/ai-fantasy-zoo-1-1-bee6e452a1.webp"
+    ],
+    "ai-fantasy-zoo-2": [
+      "/images/products/ai-fantasy-zoo-2-1-5827133857.webp"
+    ],
+    "ai-smart-life-1": [
+      "/images/products/ai-smart-life-1-1-e0680b789e.webp"
+    ],
+    "ai-smart-life-2": [
+      "/images/products/ai-smart-life-2-1-8fe2c3fb83.webp"
+    ],
+    "sach-ai-magic-world": [
+      "/images/products/sach-ai-magic-world-1-ef3af2618c.webp"
+    ],
+    "ai-transformer-workshop-1": [
+      "/images/products/ai-transformer-workshop-1-1-b8443267e8.webp"
+    ],
+    "ai-transformer-workshop-2": [
+      "/images/products/ai-transformer-workshop-2-1-2b25adfd5a.webp"
+    ],
+    "ai-super-asistant-1": [
+      "/images/products/ai-super-asistant-1-1-c52ab7d235.webp"
+    ],
+    "ai-super-asistant-2": [
+      "/images/products/ai-super-asistant-2-1-c02d54890d.webp"
+    ],
+    "ai-super-designer-1": [
+      "/images/products/ai-super-designer-1-1-1a7341ba65.webp"
+    ],
+    "ai-super-designer-2": [
+      "/images/products/ai-super-designer-2-1-073398d1e6.webp"
+    ],
+    "ai-super-engineer-1": [
+      "/images/products/ai-super-engineer-1-1-0fbc1b1ef9.webp"
+    ],
+    "ai-super-engineer-2": [
+      "/images/products/ai-super-engineer-2-1-78226db400.webp"
+    ],
+    "ai-application-exploration-1": [
+      "/images/products/ai-application-exploration-1-1-7b7c5a2eea.webp"
+    ],
+    "ai-application-exploration-2": [
+      "/images/products/ai-application-exploration-2-1-2d49264cc9.webp"
+    ]
+  },
+  "whiteBackdrops": [
+    "/images/products/scorebot-kit-2-5aeabd4eeb.webp",
+    "/images/products/scorebot-kit-3-8b95306308.webp",
+    "/images/products/scorebot-kit-4-af7d08400f.webp",
+    "/images/products/unicornbot-kit-2-e865a728dd.webp",
+    "/images/products/unicornbot-kit-3-050ec929aa.webp",
+    "/images/products/trackbot-kit-1-4e6648af44.webp",
+    "/images/products/yanshee-2-c4efb1f0e3.webp",
+    "/images/products/yanshee-3-5b0d49972e.webp",
+    "/images/products/yanshee-4-dafbb774f1.webp",
+    "/images/products/cadebot-2-f640cc3b33.webp",
+    "/images/products/cruzr-2-8255823694.webp",
+    "/images/products/cruzr-3-dad6120b27.webp",
+    "/images/products/alpha-1e-1-1e92bcc35d.webp",
+    "/images/products/walker-s2-2-0ef57a5ffb.webp",
+    "/images/products/walker-s2-3-007d4e0575.webp",
+    "/images/products/walker-tienkung-1-a07e6e98b9.webp",
+    "/images/products/walker-tienkung-2-434f905a65.webp",
+    "/images/products/ai-fantasy-zoo-1-1aeca738be.webp",
+    "/images/products/ai-fantasy-zoo-2-7c09111df8.webp",
+    "/images/products/ai-smart-life-1-cc1c0021a2.webp",
+    "/images/products/ai-smart-life-2-6331f47668.webp",
+    "/images/products/ai-magic-world-1-a986b9e4a4.webp",
+    "/images/products/ai-magic-world-2-c41fd1834f.webp",
+    "/images/products/ai-transformer-workshop-1-2f28ce07a4.webp",
+    "/images/products/ai-transformer-workshop-2-a10f87b654.webp",
+    "/images/products/ai-super-asistant-1-1e2cf3a57e.webp",
+    "/images/products/ai-super-asistant-2-af29237cf4.webp",
+    "/images/products/ai-super-engineer-1-9984b83bc9.webp",
+    "/images/products/ai-super-engineer-2-1b3852f243.webp",
+    "/images/products/courtbot-kit-1-bcf028f8c6.webp",
+    "/images/products/courtbot-kit-2-ccfb357eb5.webp",
+    "/images/products/astrobot-kit-1-7ee92c239c.webp",
+    "/images/products/astrobot-kit-2-478bc697d6.webp",
+    "/images/products/ai-super-designer-1-2449428b7a.webp",
+    "/images/products/ai-super-designer-2-c50e160d0c.webp"
+  ]
+}

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import ProductImage from '@/components/ui/ProductImage';
+import { getBundledProductImages } from '@/lib/catalogue-image-source';
 import Link from 'next/link';
 import {
   ChevronRight,
@@ -141,7 +142,9 @@ function NotFoundState({ related }: { related: any[] }) {
 }
 
 /** Image gallery */
-function ImageGallery({ images, name }: { images: any[]; name: string }) {
+type GalleryImage = { url: string; alt?: string };
+
+function ImageGallery({ images, name, slug }: { images: GalleryImage[]; name: string; slug: string }) {
   const [idx, setIdx] = useState(0);
   const total = images.length;
 
@@ -156,6 +159,8 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
           <ProductImage
             key={images[idx].url}
             src={images[idx].url}
+            productSlug={slug}
+            assetIndex={idx}
             alt={images[idx].alt || `${name} - ảnh ${idx + 1}`}
             fill
             className="object-contain p-4 transition-opacity duration-300"
@@ -189,7 +194,7 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
             </button>
             {/* Dot indicators */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-              {images.map((_: any, i: number) => (
+              {images.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setIdx(i)}
@@ -208,7 +213,7 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
       {/* Thumbnails */}
       {total > 1 && (
         <div className="flex gap-2.5 overflow-x-auto pb-1 no-scrollbar">
-          {images.map((img: any, i: number) => (
+          {images.map((img, i) => (
             <button
               key={i}
               onClick={() => setIdx(i)}
@@ -221,7 +226,7 @@ function ImageGallery({ images, name }: { images: any[]; name: string }) {
               )}
             >
               {img.url ? (
-                <ProductImage src={img.url} alt="" fill className="object-cover" />
+                <ProductImage src={img.url} productSlug={slug} assetIndex={i} alt="" fill className="object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
                   <Package className="w-6 h-6 text-[#C4C9D4]" />
@@ -258,7 +263,12 @@ export default function ProductDetail() {
   // ── Not found state ──
   if (!product) return <NotFoundState related={related} />;
 
-  const images = product.images?.length ? product.images : [];
+  const productImages = (product.images ?? [])
+    .map((img: GalleryImage | string) => typeof img === 'string' ? { url: img } : img)
+    .filter((img: GalleryImage) => img?.url);
+  const images = productImages.length
+    ? productImages
+    : getBundledProductImages(product.slug).map(url => ({ url }));
   const hasAttributes = product.attributes?.length > 0;
 
   // Parse use cases and features from description / tags if present
@@ -300,7 +310,7 @@ export default function ProductDetail() {
         <section className="py-10 lg:py-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
           {/* Gallery */}
-          <ImageGallery key={product.slug} images={images} name={product.name} />
+          <ImageGallery key={product.slug} images={images} name={product.name} slug={product.slug} />
 
           {/* Info panel */}
           <div className="space-y-8">

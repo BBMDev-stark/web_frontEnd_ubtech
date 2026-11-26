@@ -50,9 +50,9 @@ export default function Footer() {
           <p className="text-center text-[10px] text-[#3A5570] uppercase tracking-[0.22em] font-bold mb-8">Khách hàng & đối tác tin dùng</p>
           <div className="flex flex-wrap justify-center items-center gap-5">
             {partnerLogos.map((id) => (
-              <img key={id} src={`https://lh3.googleusercontent.com/d/${id}`}
+              <img key={id} src={`/images/partners/${id}.webp`}
                 alt="Partner"
-                className="h-9 w-auto object-contain max-w-[96px] grayscale invert opacity-55 hover:opacity-90 transition-opacity duration-200"
+                className="h-9 w-auto object-contain max-w-[96px] mix-blend-screen grayscale invert opacity-55 hover:opacity-90 transition-opacity duration-200"
                 onError={(e: any) => { e.target.style.display = 'none'; }} />
             ))}
           </div>
@@ -67,10 +67,9 @@ export default function Footer() {
           {/* Logo thật */}
           <div className="mb-5">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqfhqyaVMwIjSUwlvDADDX93fbyUNvXWGQbw&s"
+              src="/images/site/ubtech-logo.svg"
               alt="UBTECH Vietnam"
-              className="h-10 w-auto object-contain"
-              style={{ filter: 'brightness(1.15)' }}
+              className="h-8 w-auto object-contain"
               onError={(e: any) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';

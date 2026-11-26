@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { productImagePlaceholder } from './catalogue-image-source';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -32,8 +33,8 @@ export const getOrderStatus = (status: string) => {
 
 // Lấy ảnh chính hoặc placeholder phù hợp UBTECH
 export const getProductImage = (images?: { url: string; isPrimary: boolean }[]) => {
-  if (!images || images.length === 0) return '/placeholder-product.png';
-  return images.find(i => i.isPrimary)?.url || images[0]?.url || '/placeholder-product.png';
+  if (!images || images.length === 0) return productImagePlaceholder;
+  return images.find(i => i.isPrimary)?.url || images[0]?.url || productImagePlaceholder;
 };
 
 export const getDisplayPrice = (product: {

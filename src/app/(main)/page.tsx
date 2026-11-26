@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+import EducationPartnershipPhoto from "@/components/ui/EducationPartnershipPhoto";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -68,28 +69,28 @@ const FEATURED_ROBOTS = [
   {
     name: "Alpha Mini",
     image:
-      "https://lh3.googleusercontent.com/d/10dpsDljzIrY9U6TeSODxbmNMrB8OUSO-",
+      "/images/site/alpha-mini.webp",
     slug: "alpha-mini",
     desc: "Robot humanoid nhỏ gọn, tích hợp AI",
   },
   {
     name: "Cruzr",
     image:
-      "https://lh3.googleusercontent.com/d/12FU50aqn--4P133EitfmuPFI_Gy2n7Ew",
+      "/images/site/cruzr.webp",
     slug: "cruzr",
     desc: "Robot dịch vụ thương mại thông minh",
   },
   {
     name: "Yanshee",
     image:
-      "https://lh3.googleusercontent.com/d/1HVhd73x_HfF1Syl-LfDMgsSgp2fgnN_L",
+      "/images/site/yanshee.webp",
     slug: "yanshee",
     desc: "Robot giáo dục lập trình nâng cao",
   },
   {
     name: "Adibot",
     image:
-      "https://lh3.googleusercontent.com/d/1DjLRnfvrdrMHryqd6-sBJ9xQc4f1uGEz",
+      "/images/site/adibot.webp",
     slug: "adibot",
     desc: "Robot khử khuẩn UV-C tự hành",
   },
@@ -114,9 +115,9 @@ const COMMERCIAL_SOLUTIONS = [
 ];
 
 const AIC_IMAGES = [
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSudFY2lXBinYnK90XdUNJpoMw9cug6-Hq07_wzlWJSzH3sTBiplunKabk&s=10",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_agV09OjQKlo2pzFCyDdv-30mnGkM1vuKt5TFiNcKacc1e-7nQbkFPGTt&s=10",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRhjlqmL--QuV1_nhp1rdB9er-hUt6RmfRAi_Rz1ILXr9CUn6x1ZQUuTZw&s=10",
+  "/images/site/asset-4a90e25ec1f3.webp",
+  "/images/site/asset-8b57892228dc.webp",
+  "/images/site/asset-8a14e12168e7.webp",
 ];
 
 const PROGRAM_LEVELS = [
@@ -127,7 +128,7 @@ const PROGRAM_LEVELS = [
     desc: "Khám phá AI qua mô hình động vật, học lập trình cơ bản Blockly",
     color: "bg-green-50 border-green-200",
     badge: "bg-green-100 text-green-700",
-    img: "https://bizmovn.com/wp-content/uploads/2026/01/AI-Fantasy-Zoo-2-Sach-hoc-sinh-lop-1_5.webp",
+    img: "/images/products/ai-fantasy-zoo-2-1-5827133857.webp",
   },
   {
     level: "K4–K6",
@@ -136,7 +137,7 @@ const PROGRAM_LEVELS = [
     desc: "Cảm biến IoT, dự án thùng rác thông minh, khu vườn tự động",
     color: "bg-blue-50 border-blue-200",
     badge: "bg-blue-100 text-blue-700",
-    img: "https://bizmovn.com/wp-content/uploads/2026/01/AI-Smart-Life-1-Sach-hoc-sinh-lop-3.jpg",
+    img: "/images/products/ai-smart-life-1-1-e0680b789e.webp",
   },
   {
     level: "K7–K9",
@@ -145,7 +146,7 @@ const PROGRAM_LEVELS = [
     desc: "Điện tử nâng cao, hệ thống cảnh báo thông minh, robot tấn công",
     color: "bg-purple-50 border-purple-200",
     badge: "bg-purple-100 text-purple-700",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplGFOruLs8CUmYn5WJM1U6nlfQT8muFAepZlUo00vg&s=10",
+    img: "/images/site/asset-b2d168261cd3.webp",
   },
   {
     level: "K10–K12",
@@ -154,7 +155,7 @@ const PROGRAM_LEVELS = [
     desc: "Nghiên cứu khoa học AI, dự án nông nghiệp & công nghiệp",
     color: "bg-orange-50 border-orange-200",
     badge: "bg-orange-100 text-orange-700",
-    img: "https://vnsea.edu.vn/wp-content/uploads/2025/08/nganh-robot-va-tri-tue-nhan-tao-3.jpg",
+    img: "/images/site/asset-7c070bc98696.webp",
   },
 ];
 
@@ -215,12 +216,12 @@ function LogoRow({
       {[...logos, ...logos].map((logo, i) => (
         <div
           key={`${logo.id}-${i}`}
-          className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 flex-shrink-0 w-[120px] h-[72px] flex items-center justify-center hover:shadow-md hover:border-[#0057FF]/20 transition-all"
+          className="bg-transparent rounded-xl p-4 flex-shrink-0 w-[120px] h-[72px] flex items-center justify-center"
         >
           <img
-            src={`https://lh3.googleusercontent.com/d/${logo.id}`}
+            src={`/images/partners/${logo.id}.webp`}
             alt={logo.name}
-            className="max-w-full max-h-full object-contain"
+            className="max-w-full max-h-full object-contain mix-blend-multiply"
             onError={(e: any) => {
               e.target.parentElement.style.opacity = "0";
             }}
@@ -587,39 +588,7 @@ export default function HomePage() {
                   ))}
                 </ul>
               </div>
-              <div className="flex flex-col gap-4">
-                <div
-                  className="rounded-2xl shadow-xl bg-white p-4 flex items-center justify-center"
-                  style={{ minHeight: "200px" }}
-                >
-                  <img
-                    src="https://ubtechvietnam.edu.vn/img/T2.png"
-                    alt="UBTECH Agreement"
-                    className="w-full h-auto object-contain"
-                    style={{ maxHeight: "260px" }}
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    "https://ubtechvietnam.edu.vn/img/TD2.png",
-                    "https://ubtechvietnam.edu.vn/img/TD1.png",
-                    "https://ubtechvietnam.edu.vn/img/TD3.png",
-                  ].map((src, i) => (
-                    <div
-                      key={i}
-                      className="rounded-xl shadow-lg bg-white p-3 flex items-center justify-center"
-                      style={{ minHeight: "130px" }}
-                    >
-                      <img
-                        src={src}
-                        alt={`Chứng nhận ${i + 1}`}
-                        className="w-full h-auto object-contain"
-                        style={{ maxHeight: "170px" }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <EducationPartnershipPhoto />
             </div>
           </div>
         </div>

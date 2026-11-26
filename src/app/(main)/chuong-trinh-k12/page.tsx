@@ -13,7 +13,7 @@ const PROGRAMS = [
     color: "from-green-500 to-emerald-600",
     bgLight: "bg-green-50 border-green-200",
     image:
-      "https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU",
+      "/images/site/asset-d9fd7478c7c0.webp",
     desc: "Khóa học áp dụng phương pháp làm việc nhóm để giúp học viên khám phá các phương pháp xây dựng các mô hình động vật khác nhau và có được kiến thức lập trình cơ bản để mô phỏng hành vi và cách thức của các loài động vật khác nhau.",
     skills: [
       "Lập trình Blockly cơ bản",
@@ -31,7 +31,7 @@ const PROGRAMS = [
     color: "from-blue-500 to-blue-600",
     bgLight: "bg-blue-50 border-blue-200",
     image:
-      "https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU",
+      "/images/site/asset-d9fd7478c7c0.webp",
     desc: "Khóa học giúp học viên hiểu nguyên lý và ứng dụng của các loại cảm biến thông dụng qua hoạt động nhóm và các dự án thực tế như thùng rác, khu vườn hay xe quét rác thông minh.",
     skills: [
       "Cảm biến IoT",
@@ -49,7 +49,7 @@ const PROGRAMS = [
     color: "from-purple-500 to-purple-600",
     bgLight: "bg-purple-50 border-purple-200",
     image:
-      "https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU",
+      "/images/site/asset-d9fd7478c7c0.webp",
     desc: "Khóa học giúp học sinh khám phá hiện tượng thực tế qua việc xây dựng mô hình như bảng quảng cáo chuyển đổi, robot tấn công, hay hệ thống cảnh báo. Bằng cách sử dụng các cảm biến và linh kiện điện tử.",
     skills: [
       "Điện tử nâng cao",
@@ -67,7 +67,7 @@ const PROGRAMS = [
     color: "from-orange-500 to-red-600",
     bgLight: "bg-orange-50 border-orange-200",
     image:
-      "https://lh3.googleusercontent.com/d/1RTKSLUhDzH9H4xVNYUMkH2gZmRl9RnsU",
+      "/images/site/asset-d9fd7478c7c0.webp",
     desc: "Khóa học giúp học sinh phát triển AI một cách chủ động thông qua nghiên cứu khoa học và các dự án thực tế trong lĩnh vực nông nghiệp, công nghiệp và robot.",
     skills: [
       "Nghiên cứu khoa học AI",

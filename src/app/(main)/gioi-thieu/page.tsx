@@ -1,6 +1,7 @@
 'use client';
 import { CheckCircle2, Award, Globe, FileText, ShieldCheck, Users, ArrowRight, Building2 } from 'lucide-react';
 import Link from 'next/link';
+import EducationPartnershipPhoto from '@/components/ui/EducationPartnershipPhoto';
 
 export default function AboutPage() {
   return (
@@ -52,7 +53,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-2xl bg-[#F8FAFF] aspect-[4/3] flex items-center justify-center">
               <img
-                src="https://omt.vn/wp-content/uploads/2023/03/1bd707cdc3b01fee46a1-1024x768.jpeg"
+                src="/images/site/asset-65066143e7c9.webp"
                 alt="UBTECH Distributor Agreement"
                 className="w-full h-full object-cover"
               />
@@ -100,18 +101,7 @@ export default function AboutPage() {
                   ))}
                 </ul>
               </div>
-              <div className="space-y-4">
-                <div className="bg-white rounded-2xl overflow-hidden p-3 shadow-lg">
-                  <img src="https://ubtechvietnam.edu.vn/img/T2.png" alt="UBTECH Authorization Letter" className="w-full object-contain" style={{maxHeight:'260px'}} />
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                  {['https://ubtechvietnam.edu.vn/img/TD2.png', 'https://ubtechvietnam.edu.vn/img/TD1.png', 'https://ubtechvietnam.edu.vn/img/TD3.png'].map((src, i) => (
-                    <div key={i} className="bg-white rounded-xl overflow-hidden p-2 shadow-md flex items-center justify-center" style={{minHeight:'140px'}}>
-                      <img src={src} alt={`Chứng nhận ${i+1}`} className="w-full h-auto object-contain" style={{maxHeight:'180px'}} />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <EducationPartnershipPhoto />
             </div>
           </div>
 
@@ -172,10 +162,10 @@ export default function AboutPage() {
               </ul>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              {['https://scontent.fsgn15-1.fna.fbcdn.net/v/t39.30808-6/605085867_1183502030579471_8774207897507401778_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1366&ctp=s2048x1366&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=VuawwKZm0DkQ7kNvwHANRUV&_nc_oc=AdpbFPAlY_OMIwd_1lMMIdy_rrlmrke1JDauOKq9MDnOYW9Cav5Ri4ZXoEdlHUE1H0Pyk6SoKZ1hn3HoufUUvy1F&_nc_zt=23&_nc_ht=scontent.fsgn15-1.fna&_nc_gid=TJH9u7xFlMzz2eaVjjDk8Q&_nc_ss=7b289&oh=00_Af8RjdvV4mbd65GHT5D2huZh5FDr0f6xVOUiExEob_MCyg&oe=6A333584',
-                'https://owebsite-cdn.ubtrobot.com/en/uploadfiles/home8mo.png',
-                'https://owebsite-cdn.ubtrobot.com/en/uploadfiles/education/aEduNeeds_03.jpg',
-                'https://ippgroup.vn/website/var/tmp/image-thumbnails/0/6645/thumb__auto_7e7e0dad23d3cca166d67825e3368bc6/AIC1.jpeg',
+              {['/images/education/dalat-ai-center.webp',
+                '/images/site/ubtech-robot-lineup.webp',
+                '/images/site/ubtech-ai-education.webp',
+                '/images/site/ai-center-hcm.webp',
               ].map((img, i) => (
                 <div key={i} className="rounded-2xl overflow-hidden shadow-md">
                   <img src={img} alt={`AI Center ${i+1}`} className="w-full object-cover h-36" />

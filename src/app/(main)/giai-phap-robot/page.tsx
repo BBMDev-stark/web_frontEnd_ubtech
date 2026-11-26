@@ -5,8 +5,6 @@ import Link from 'next/link';
 import {
   ArrowRight,
   Cpu,
-  Building2,
-  Wrench,
   ChevronRight,
 } from 'lucide-react';
 
@@ -15,13 +13,11 @@ const SECTIONS = [
     id: 'dich-vu',
     title: 'Robot Dịch Vụ Thương Mại',
     subtitle: 'Tự động hóa — Dịch vụ — Y tế',
-    icon: Building2,
-    gradient: 'from-blue-600 to-blue-800',
     products: [
       {
         name: 'ADIBOT',
         slug: 'adibot',
-        img: 'https://lh3.googleusercontent.com/d/1DjLRnfvrdrMHryqd6-sBJ9xQc4f1uGEz',
+        img: '/images/site/adibot.webp',
         tag: 'Khử khuẩn',
         tc: 'bg-red-100 text-red-700',
         desc: 'Robot tự hành UV-C, 99.9% hiệu quả. Bệnh viện, khách sạn, văn phòng.',
@@ -29,7 +25,7 @@ const SECTIONS = [
       {
         name: 'CRUZR',
         slug: 'cruzr',
-        img: 'https://lh3.googleusercontent.com/d/12FU50aqn--4P133EitfmuPFI_Gy2n7Ew',
+        img: '/images/site/cruzr.webp',
         tag: 'Dịch vụ',
         tc: 'bg-blue-100 text-blue-700',
         desc: 'Robot hình người tương tác khách hàng. Ngân hàng, bệnh viện, sân bay.',
@@ -37,7 +33,7 @@ const SECTIONS = [
       {
         name: 'CADEBOT L100',
         slug: 'cadebot',
-        img: 'https://lh3.googleusercontent.com/d/1K5Tue2ITNasEiUJr2EM0HEueqvkToP9A',
+        img: '/images/site/cadebot.webp',
         tag: 'Giao hàng',
         tc: 'bg-green-100 text-green-700',
         desc: 'Robot giao hàng tự động. Nhà hàng, khách sạn, siêu thị.',
@@ -48,13 +44,11 @@ const SECTIONS = [
     id: 'giao-duc',
     title: 'Robot Giáo Dục & Nghiên Cứu',
     subtitle: 'AI — Humanoid — Lập trình',
-    icon: Cpu,
-    gradient: 'from-indigo-600 to-purple-700',
     products: [
       {
         name: 'ALPHA 1E',
         slug: 'alpha-1e',
-        img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/03/Alpha_1E_08.png',
+        img: '/images/site/alpha-1e.webp',
         tag: 'Giáo dục',
         tc: 'bg-teal-100 text-teal-700',
         desc: 'Robot hình người 16 servo, Blockly & Python. STEM K-12.',
@@ -62,7 +56,7 @@ const SECTIONS = [
       {
         name: 'ALPHA MINI',
         slug: 'alpha-mini',
-        img: 'https://lh3.googleusercontent.com/d/10dpsDljzIrY9U6TeSODxbmNMrB8OUSO-',
+        img: '/images/site/alpha-mini.webp',
         tag: 'Giáo dục',
         tc: 'bg-teal-100 text-teal-700',
         desc: 'Robot mini 14 servo, camera HD 13MP, nhận diện khuôn mặt.',
@@ -70,7 +64,7 @@ const SECTIONS = [
       {
         name: 'YANSHEE',
         slug: 'yanshee',
-        img: 'https://lh3.googleusercontent.com/d/1HVhd73x_HfF1Syl-LfDMgsSgp2fgnN_L',
+        img: '/images/site/yanshee.webp',
         tag: 'Nâng cao',
         tc: 'bg-purple-100 text-purple-700',
         desc: 'Robot humanoid 17 servo, Python/C/Blockly/Scratch/Java.',
@@ -78,7 +72,7 @@ const SECTIONS = [
       {
         name: 'AI UGOT',
         slug: 'ai-ugot',
-        img: 'https://lh3.googleusercontent.com/d/17-nzBOR9sO5C7wtX3TQLTj0nFGD6VwQm',
+        img: '/images/site/ai-ugot.webp',
         tag: 'Mô-đun AI',
         tc: 'bg-orange-100 text-orange-700',
         desc: 'Robot mô-đun 7+ hình dạng, Blockly và Python.',
@@ -86,7 +80,7 @@ const SECTIONS = [
       {
         name: 'WALKER S1',
         slug: 'walker-s1',
-        img: 'https://owebsite-cdn.ubtrobot.com/resources/image/2024/10/13/600678134571077.jpg',
+        img: '/images/site/walker-s1.webp',
         tag: 'Humanoid Pro',
         tc: 'bg-slate-100 text-slate-700',
         desc: 'Humanoid 36 DoF, U-SLAM 3D, dây chuyền sản xuất EV.',
@@ -94,7 +88,7 @@ const SECTIONS = [
       {
         name: 'WALKER E',
         slug: 'walker-e',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraP9dZ-x3AfZNkIW6qGBehx1-xc0NSFkV6GRRo8Wh8xE8oTOPkagkTzXX&s=10',
+        img: '/images/site/walker-e.webp',
         tag: 'Humanoid',
         tc: 'bg-indigo-100 text-indigo-700',
         desc: 'Humanoid thế hệ mới, nhận diện cảm xúc, dịch vụ cao cấp.',
@@ -105,13 +99,11 @@ const SECTIONS = [
     id: 'jimu',
     title: 'Bộ Kit Robot JIMU',
     subtitle: 'Lắp ráp — Sáng tạo — STEM',
-    icon: Wrench,
-    gradient: 'from-orange-500 to-red-600',
     products: [
       {
         name: 'ASTROBOT KIT',
         slug: 'astrobot-kit',
-        img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/03/Astrobot_01.jpg',
+        img: '/images/products/astrobot-kit-1-7ee92c239c.webp',
         tag: 'Vũ trụ',
         tc: 'bg-sky-100 text-sky-700',
         desc: 'Robot phi hành gia, cảm biến con quay, Blockly & Python. 300+ linh kiện.',
@@ -119,7 +111,7 @@ const SECTIONS = [
       {
         name: 'COURTBOT KIT',
         slug: 'courtbot-kit',
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4JQCMTFCJKEKWbn7mAZoVaLoaI3suzPT9stAtkpe3-AVrHK-1jsk6XhiF&s=10',
+        img: '/images/products/courtbot-kit-1-bcf028f8c6.webp',
         tag: 'Bóng rổ',
         tc: 'bg-orange-100 text-orange-700',
         desc: 'Robot bóng rổ, 200+ linh kiện, vật lý + toán học + lập trình.',
@@ -127,7 +119,7 @@ const SECTIONS = [
       {
         name: 'SCOREBOT KIT',
         slug: 'scorebot-kit',
-        img: 'https://lh3.googleusercontent.com/d/1kbjVT3GT8MnD6KA7vJJJYsZ07l-bI1AE',
+        img: '/images/site/scorebot.webp',
         tag: 'Bóng đá',
         tc: 'bg-green-100 text-green-700',
         desc: 'Robot bóng đá Manchester City FC. 261 linh kiện.',
@@ -135,7 +127,7 @@ const SECTIONS = [
       {
         name: 'TRACKBOT KIT',
         slug: 'trackbot-kit',
-        img: 'https://lh3.googleusercontent.com/d/1fTAP4QJNJx7hj5ajuTTCNRxlU9WGDxsQ',
+        img: '/images/site/trackbot.webp',
         tag: 'Địa hình',
         tc: 'bg-yellow-100 text-yellow-700',
         desc: 'GrabberBot & DiggerBot, động cơ cao tốc, LED đa màu.',
@@ -143,7 +135,7 @@ const SECTIONS = [
       {
         name: 'UNICORNBOT KIT',
         slug: 'unicornbot-kit',
-        img: 'https://lh3.googleusercontent.com/d/1hOwSthB6t45QUEgFvVuybhOlB_UvfKXk',
+        img: '/images/site/unicornbot.webp',
         tag: 'Kỳ lân',
         tc: 'bg-pink-100 text-pink-700',
         desc: 'Robot kỳ lân Series Thần Thoại, cảm biến màu sắc, servo mượt.',
@@ -208,22 +200,13 @@ export default function GiaiPhapRobotPage() {
         {SECTIONS.map((sec) => (
           <section key={sec.id} id={sec.id}>
             <div className="flex items-start justify-between mb-8">
-              <div className="flex items-center gap-4">
-                <div
-                  className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${sec.gradient} flex items-center justify-center shadow-lg`}
-                >
-                  <sec.icon className="w-6 h-6 text-white" />
-                </div>
-
-                <div>
+              <div>
                   <h2 className="text-2xl lg:text-3xl font-black text-[#050E2B]">
-                    {sec.title}
-                  </h2>
-
-                  <p className="text-[13px] text-[#6B7280] mt-0.5">
-                    {sec.subtitle}
-                  </p>
-                </div>
+                  {sec.title}
+                </h2>
+                <p className="text-[13px] text-[#6B7280] mt-0.5">
+                  {sec.subtitle}
+                </p>
               </div>
 
               <Link
@@ -238,17 +221,14 @@ export default function GiaiPhapRobotPage() {
               {sec.products.map((p) => (
                 <Link
                   key={p.slug}
-                  href={`/san-pham/${p.slug}`}
+                  href={p.slug === 'walker-s1' || p.slug === 'walker-e' ? '/lien-he' : `/san-pham/${p.slug}`}
                   className="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 hover:border-[#0057FF]/20"
                 >
                   <div className="bg-[#F8F9FA] h-[220px] flex items-center justify-center overflow-hidden">
                     <img
                       src={p.img}
                       alt={p.name}
-                      className="w-full h-full object-contain p-5 transition-transform duration-300 group-hover:scale-105"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.opacity = '0.15';
-                      }}
+                      className={`w-full h-full object-contain p-5 transition-transform duration-300 group-hover:scale-105 ${p.slug === 'walker-s1' ? '' : 'mix-blend-multiply'}`}
                     />
                   </div>
 

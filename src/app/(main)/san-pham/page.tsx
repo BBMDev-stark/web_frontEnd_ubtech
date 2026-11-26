@@ -1,6 +1,7 @@
 'use client';
 
 import ProductImage from '@/components/ui/ProductImage';
+import { getBundledProductImages } from '@/lib/catalogue-image-source';
 import { Suspense } from 'react';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -110,7 +111,7 @@ function SolutionCard({
   view?: ViewMode;
 }) {
   const imageUrl = product.images?.[0]?.url || product.images?.[0] || product.image || '';
-  const hasImage = !!imageUrl;
+  const hasImage = !!imageUrl || getBundledProductImages(product.slug).length > 0;
 
   const categoryName   = product.category?.name || '';
   const productSegment = product.segment || product.targetSegment || product.group || '';
@@ -166,6 +167,7 @@ function SolutionCard({
             {hasImage ? (
               <ProductImage
                 src={imageUrl}
+                productSlug={product.slug}
                 alt={product.name}
                 fill
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
@@ -209,6 +211,7 @@ function SolutionCard({
           {hasImage ? (
             <ProductImage
               src={imageUrl}
+              productSlug={product.slug}
               alt={product.name}
               fill
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"

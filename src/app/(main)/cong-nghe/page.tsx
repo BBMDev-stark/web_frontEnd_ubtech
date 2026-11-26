@@ -12,7 +12,7 @@ const HUMANOID = [
     name: 'Walker S1',
     tag: 'Industrial · Flagship',
     badge: 'Latest',
-    img: 'https://i.ytimg.com/vi/UBbk18oZbTc/maxresdefault.jpg',
+    img: '/images/site/technology-walker-video.webp',
     href: 'https://www.ubtrobot.com/en/humanoid/products/walker-s1',
     specs: [
       { label: 'Degrees of Freedom', val: '36 DoF' },
@@ -26,7 +26,7 @@ const HUMANOID = [
     name: 'Walker S2',
     tag: 'Industrial · Next-Gen',
     badge: 'New',
-    img: 'https://i.ytimg.com/vi/TNryO2uasws/maxresdefault.jpg',
+    img: '/images/site/technology-robotics-video.webp',
     href: 'https://www.ubtrobot.com/en/humanoid/products/walker-s2',
     specs: [
       { label: 'Hand DoF', val: '12 DoF/hand' },
@@ -40,7 +40,7 @@ const HUMANOID = [
     name: 'Walker C',
     tag: 'Commercial · Service',
     badge: '',
-    img: 'https://i.ytimg.com/vi/INZ5jXuyUBg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAFiyYluRomBK0eKihj44JY3hBDhA',
+    img: '/images/site/technology-robot-video.webp',
     href: 'https://www.ubtrobot.com/en/humanoid/products/walker-c',
     specs: [
       { label: 'Environment', val: 'Hospitality · Retail' },
@@ -56,7 +56,7 @@ const COMMERCIAL = [
   {
     name: 'Cruzr S2',
     tag: 'Wheeled Service Robot',
-    img: 'https://owebsite-cdn.ubtrobot.com/resources/image/2025/08/20/710747560288325.png',
+    img: '/images/site/walker-s2-preview.webp',
     href: '/san-pham/cruzr-s2',
     desc: 'Robot dịch vụ bánh xe thế hệ mới — U-SLAM 10.000 m², nhận diện khuôn mặt và màn hình tương tác 10". Phù hợp ngân hàng, bệnh viện, trung tâm thương mại.',
     specs: ['U-SLAM 10,000 m²', 'Face recognition AI', '10" touchscreen', '24/7 autonomous'],
@@ -64,7 +64,7 @@ const COMMERCIAL = [
   {
     name: 'Adibot',
     tag: 'Healthcare · UV-C',
-    img: 'https://lh3.googleusercontent.com/d/1DjLRnfvrdrMHryqd6-sBJ9xQc4f1uGEz',
+    img: '/images/site/adibot.webp',
     href: '/san-pham/adibot',
     desc: 'Robot khử khuẩn UV-C 360° hoàn toàn tự hành. Vô hiệu hoá vi khuẩn và virus tại bệnh viện, trường học, sân bay không cần nhân sự vận hành.',
     specs: ['UV-C 360° auto', 'U-SLAM navigation', 'Human-safe sensors', 'Unattended ops'],
@@ -72,7 +72,7 @@ const COMMERCIAL = [
   {
     name: 'Cadebot L100',
     tag: 'Logistics · AMR',
-    img: 'https://lh3.googleusercontent.com/d/1K5Tue2ITNasEiUJr2EM0HEueqvkToP9A',
+    img: '/images/site/cadebot.webp',
     href: '/san-pham/cadebot',
     desc: 'Robot AMR logistics tự hành, tải trọng 100 kg — tự động hoá kho hàng và nhà máy, tích hợp WMS/ERP, vận hành 24/7 liên tục.',
     specs: ['100 kg payload', 'AMR autonomous', 'WMS/ERP ready', '24/7 operation'],
@@ -83,7 +83,7 @@ const EDU = [
   {
     name: 'Walker Tienkung',
     tag: 'University · Humanoid',
-    img: 'https://owebsite-cdn.ubtrobot.com/resources/image/2025/12/18/753204368146501.png',
+    img: '/images/site/walker-tienkung-feature.webp',
     href: 'https://www.ubtrobot.com/en/ai-education/products/walker-tienkung',
     desc: 'Dòng Walker thu nhỏ cho phòng thí nghiệm đại học — thực hành AI, điều khiển robot hai chân, Python và ROS với phần cứng thực tế.',
     specs: ['Biped humanoid', 'Python / ROS', 'AI Vision system', 'University-grade'],
@@ -91,7 +91,7 @@ const EDU = [
   {
     name: 'Yanshee',
     tag: 'STEM · Open Platform',
-    img: 'https://lh3.googleusercontent.com/d/1HVhd73x_HfF1Syl-LfDMgsSgp2fgnN_L',
+    img: '/images/site/yanshee.webp',
     href: '/san-pham/yanshee',
     desc: 'Robot humanoid giáo dục nền tảng mở — 17 servo, Raspberry Pi 3B+, lập trình Python và AI thực chiến cho THCS, THPT và Đại học.',
     specs: ['17 servo actuators', 'Raspberry Pi 3B+', 'Python · Blockly · DRP', 'Open API/SDK'],
@@ -99,7 +99,7 @@ const EDU = [
   {
     name: 'AI UGOT',
     tag: 'Modular · AI Vision',
-    img: 'https://lh3.googleusercontent.com/d/17-nzBOR9sO5C7wtX3TQLTj0nFGD6VwQm',
+    img: '/images/site/ai-ugot.webp',
     href: '/san-pham/ai-ugot',
     desc: 'Hệ thống robot mô-đun tích hợp AI Vision — nhận diện vật thể thời gian thực, lập trình đa cấp từ Blockly kéo-thả đến Python nâng cao.',
     specs: ['Modular system', 'AI Vision camera', 'Blockly → Python', 'Arduino compat.'],
@@ -107,7 +107,7 @@ const EDU = [
   {
     name: 'uKit AI',
     tag: 'K12 · Curriculum',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRShRmKYOS6RIzm_2h-xUvpZZ2pDB8PW8MJLA&s',
+    img: '/images/site/asset-7b1704181536.webp',
     href: 'https://www.ubtrobot.com/en/ai-education/products/ukit-ai',
     desc: 'Bộ kit giáo dục AI chuẩn K12 — kết hợp lắp ráp phần cứng với lập trình AI và machine learning theo chương trình UBTECH toàn cầu.',
     specs: ['AI + hardware kit', 'Machine learning', 'K12 curriculum', 'Cloud platform'],

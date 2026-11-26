@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import ProductImage from '@/components/ui/ProductImage';
+import { getBundledProductImages } from '@/lib/catalogue-image-source';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -120,8 +121,8 @@ export default function CartPage() {
             return (
               <div key={item._id} className="flex gap-4 p-4 bg-white rounded-2xl border border-[#E4E8EF] hover:border-[#0057FF]/20 transition-colors">
                 <Link href={href} className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-[#F5F7FA] overflow-hidden flex-shrink-0">
-                  {item.image
-                    ? <ProductImage src={item.image} alt={item.name} fill className="object-contain p-1" />
+                  {item.image || getBundledProductImages(item.slug).length > 0
+                    ? <ProductImage src={item.image} productSlug={item.slug} alt={item.name} fill className="object-contain p-1" />
                     : <div className="w-full h-full flex items-center justify-center"><Package className="w-8 h-8 text-[#C4C9D4]" /></div>}
                 </Link>
                 <div className="flex-1 min-w-0">

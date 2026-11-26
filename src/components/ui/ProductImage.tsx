@@ -2,19 +2,34 @@
 
 import Image, { type ImageProps } from 'next/image';
 import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import {
+  getBundledProductImages,
+  hasLightProductBackdrop,
+  localProductImagePath,
+  productImagePlaceholder,
+} from '@/lib/catalogue-image-source';
 
-const fallback = '/images/products/placeholder.svg';
+type ProductImageProps = Omit<ImageProps, 'onError'> & {
+  productSlug?: string;
+  assetIndex?: number;
+};
 
-export default function ProductImage({ src, ...props }: Omit<ImageProps, 'onError'>) {
-  const [failedSource, setFailedSource] = useState<ImageProps['src'] | null>(null);
-  const showFallback = !src || src === failedSource;
+export default function ProductImage({ src, productSlug, assetIndex = 0, className, ...props }: ProductImageProps) {
+  const [failedSources, setFailedSources] = useState<string[]>([]);
+  const localPath = typeof src === 'string' ? localProductImagePath(src) : undefined;
+  const bundled = getBundledProductImages(productSlug);
+  const candidates = [localPath, bundled[assetIndex] ?? bundled[0]];
+  const source = candidates.find(path => path && path !== productImagePlaceholder && !failedSources.includes(path))
+    ?? productImagePlaceholder;
 
   return (
     <Image
       {...props}
-      src={showFallback ? fallback : src}
+      src={source}
+      className={cn(className, hasLightProductBackdrop(source) && 'mix-blend-multiply')}
       unoptimized
-      onError={showFallback ? undefined : () => setFailedSource(src)}
+      onError={source === productImagePlaceholder ? undefined : () => setFailedSources(previous => [...previous, source])}
     />
   );
 }

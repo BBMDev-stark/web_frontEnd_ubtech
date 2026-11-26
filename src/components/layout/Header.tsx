@@ -12,6 +12,7 @@ import { useAuthStore } from '@/store/auth.store';
 import { useCartStore } from '@/store/cart.store';
 import { cn, formatPrice } from '@/lib/utils';
 import ProductImage from '@/components/ui/ProductImage';
+import { getBundledProductImages } from '@/lib/catalogue-image-source';
 import api from '@/lib/axios';
 
 const ZALO  = process.env.NEXT_PUBLIC_ZALO_PHONE || '0915594103';
@@ -29,54 +30,54 @@ const MEGA_SECTIONS = [
   {
     title: 'ROBOT DỊCH VỤ',
     items: [
-      { name: 'ADIBOT',       slug: 'adibot',      img: 'https://lh3.googleusercontent.com/d/1DjLRnfvrdrMHryqd6-sBJ9xQc4f1uGEz', desc: 'Robot khử khuẩn UV-C' },
-      { name: 'CRUZR',        slug: 'cruzr',        img: 'https://lh3.googleusercontent.com/d/12FU50aqn--4P133EitfmuPFI_Gy2n7Ew', desc: 'Robot dịch vụ khách hàng' },
-      { name: 'CADEBOT L100', slug: 'cadebot',      img: 'https://lh3.googleusercontent.com/d/1K5Tue2ITNasEiUJr2EM0HEueqvkToP9A', desc: 'Robot giao hàng tự động' },
+      { name: 'ADIBOT',       slug: 'adibot',      img: '/images/site/adibot.webp', desc: 'Robot khử khuẩn UV-C' },
+      { name: 'CRUZR',        slug: 'cruzr',        img: '/images/site/cruzr.webp', desc: 'Robot dịch vụ khách hàng' },
+      { name: 'CADEBOT L100', slug: 'cadebot',      img: '/images/site/cadebot.webp', desc: 'Robot giao hàng tự động' },
     ],
   },
   {
     title: 'ROBOT GIÁO DỤC',
     items: [
-      { name: 'YANSHEE',    slug: 'yanshee',   img: 'https://lh3.googleusercontent.com/d/1HVhd73x_HfF1Syl-LfDMgsSgp2fgnN_L', desc: 'Robot humanoid 17 servo' },
-      { name: 'ALPHA MINI', slug: 'alpha-mini',img: 'https://lh3.googleusercontent.com/d/10dpsDljzIrY9U6TeSODxbmNMrB8OUSO-', desc: 'Robot mini 14 servo' },
-      { name: 'ALPHA 1E',   slug: 'alpha-1e',  img: 'https://lh3.googleusercontent.com/d/1ZQfOilItslY3d5U_NPNvVLIqeYnMFiVO', desc: 'Robot giáo dục 16 servo' },
-      { name: 'AI UGOT',    slug: 'ai-ugot',   img: 'https://lh3.googleusercontent.com/d/17-nzBOR9sO5C7wtX3TQLTj0nFGD6VwQm', desc: 'Robot mô-đun AI' },
-      { name: 'WALKER S2',  slug: 'walker-s2', img: 'https://lh3.googleusercontent.com/d/1SEj7W9nXw8Axw8MUv8-z2Wk-9PhTPtpq', desc: 'Humanoid 36 DoF' },
-      { name: 'TienKung',   slug: 'TienKung',  img: 'https://www.canadasatellite.ca/pub/media/catalog/product/u/b/ubtech-walker-tienkung-embodied-intelligence-5.jpg', desc: 'Humanoid thế hệ mới' },
+      { name: 'YANSHEE',    slug: 'yanshee',   img: '/images/site/yanshee.webp', desc: 'Robot humanoid 17 servo' },
+      { name: 'ALPHA MINI', slug: 'alpha-mini',img: '/images/site/alpha-mini.webp', desc: 'Robot mini 14 servo' },
+      { name: 'ALPHA 1E',   slug: 'alpha-1e',  img: '/images/site/alpha-1e.webp', desc: 'Robot giáo dục 16 servo' },
+      { name: 'AI UGOT',    slug: 'ai-ugot',   img: '/images/site/ai-ugot.webp', desc: 'Robot mô-đun AI' },
+      { name: 'WALKER S2',  slug: 'walker-s2', img: '/images/site/walker-s2.webp', desc: 'Humanoid 36 DoF' },
+      { name: 'TienKung',   slug: 'walker-tienkung',  img: '/images/site/walker-tienkung-cutout.webp', desc: 'Humanoid thế hệ mới' },
     ],
   },
   {
     title: 'BỘ KIT JIMU',
     items: [
-      { name: 'SCOREBOT',   slug: 'scorebot-kit',   img: 'https://lh3.googleusercontent.com/d/1kbjVT3GT8MnD6KA7vJJJYsZ07l-bI1AE', desc: 'Robot bóng đá' },
-      { name: 'COURTBOT',   slug: 'courtbot-kit',   img: 'https://lh3.googleusercontent.com/d/1GjW_zAWyPNv2S9lgQPOeanmXYGUqLASd', desc: 'Robot bóng rổ' },
-      { name: 'ASTROBOT',   slug: 'astrobot-kit',   img: 'https://ubtechvietnam.edu.vn/wp-content/uploads/2021/03/Astrobot_01.jpg', desc: 'Robot vũ trụ' },
-      { name: 'TRACKBOT',   slug: 'trackbot-kit',   img: 'https://lh3.googleusercontent.com/d/1fTAP4QJNJx7hj5ajuTTCNRxlU9WGDxsQ', desc: 'Robot địa hình' },
-      { name: 'UNICORNBOT', slug: 'unicornbot-kit', img: 'https://lh3.googleusercontent.com/d/1hOwSthB6t45QUEgFvVuybhOlB_UvfKXk', desc: 'Robot kỳ lân' },
+      { name: 'SCOREBOT',   slug: 'scorebot-kit',   img: '/images/site/scorebot.webp', desc: 'Robot bóng đá' },
+      { name: 'COURTBOT',   slug: 'courtbot-kit',   img: '/images/site/courtbot.webp', desc: 'Robot bóng rổ' },
+      { name: 'ASTROBOT',   slug: 'astrobot-kit',   img: '/images/products/astrobot-kit-1-7ee92c239c.webp', desc: 'Robot vũ trụ' },
+      { name: 'TRACKBOT',   slug: 'trackbot-kit',   img: '/images/site/trackbot.webp', desc: 'Robot địa hình' },
+      { name: 'UNICORNBOT', slug: 'unicornbot-kit', img: '/images/site/unicornbot.webp', desc: 'Robot kỳ lân' },
     ],
   },
   {
     title: 'BỘ KIT AI',
     items: [
-      { name: 'AI FANTASY ZOO',     slug: 'ai-fantasy-zoo',          img: 'https://lh3.googleusercontent.com/d/12FekyybqvXMnb1dnFhjKNFG06H_cOYNf', desc: 'K1–K3' },
-      { name: 'AI SMART LIFE',      slug: 'ai-smart-life',           img: 'https://lh3.googleusercontent.com/d/12FekyybqvXMnb1dnFhjKNFG06H_cOYNf', desc: 'K4–K6' },
-      { name: 'AI TRANSFORMER',     slug: 'ai-transformer-workshop', img: 'https://lh3.googleusercontent.com/d/12FekyybqvXMnb1dnFhjKNFG06H_cOYNf', desc: 'K7–K9' },
-      { name: 'AI SUPER ASSISTANT', slug: 'ai-super-asistant',       img: 'https://lh3.googleusercontent.com/d/12FekyybqvXMnb1dnFhjKNFG06H_cOYNf', desc: 'K5–K8' },
-      { name: 'AI SUPER ENGINEER',  slug: 'ai-super-engineer',       img: 'https://lh3.googleusercontent.com/d/12FekyybqvXMnb1dnFhjKNFG06H_cOYNf', desc: 'K9–K12' },
-      { name: 'AI SUPER DESIGNER',  slug: 'ai-super-designer-1',     img: 'https://lh3.googleusercontent.com/d/12FekyybqvXMnb1dnFhjKNFG06H_cOYNf', desc: 'K8–K10' },
+      { name: 'AI FANTASY ZOO',     slug: 'ai-fantasy-zoo', img: '/images/products/ai-fantasy-zoo-1-1aeca738be.webp', desc: 'K1–K3' },
+      { name: 'AI SMART LIFE',      slug: 'ai-smart-life', img: '/images/products/ai-smart-life-1-cc1c0021a2.webp', desc: 'K4–K6' },
+      { name: 'AI TRANSFORMER',     slug: 'ai-transformer-workshop', img: '/images/products/ai-transformer-workshop-1-2f28ce07a4.webp', desc: 'K7–K9' },
+      { name: 'AI SUPER ASSISTANT', slug: 'ai-super-asistant', img: '/images/products/ai-super-asistant-1-1e2cf3a57e.webp', desc: 'K5–K8' },
+      { name: 'AI SUPER ENGINEER',  slug: 'ai-super-engineer', img: '/images/products/ai-super-engineer-1-9984b83bc9.webp', desc: 'K9–K12' },
+      { name: 'AI SUPER DESIGNER',  slug: 'ai-super-designer', img: '/images/products/ai-super-designer-1-2449428b7a.webp', desc: 'K8–K10' },
     ],
   },
   {
     title: 'SÁCH',
     items: [
-      { name: 'AI FANTASY ZOO',              slug: 'sach-ai-fantasy-zoo-tap-1',          img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-FANTASY-ZOO-1.webp',                                                                                               desc: '' },
-      { name: 'AI MAGIC WORLD',              slug: 'sach-ai-magic-world',                img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-MAGIC-WORLD-1-1.webp',                                                                                             desc: '' },
-      { name: 'AI SMART LIFE',               slug: 'sach-ai-smart-life-tap-1',           img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SMART-LIFE-1.webp',                                                                                                desc: '' },
-      { name: 'AI SUPER ASSISTANT',          slug: 'sach-ai-super-assistant-tap-1',      img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-Super-Assistant-1-1.webp',                                                                                         desc: '' },
-      { name: 'AI TRANSFORMER WORKSHOP',    slug: 'sach-ai-transformer-workshop-tap-1', img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-TRANSFORMER-WORKSHOP-1.webp',                                                                                      desc: '' },
-      { name: 'AI SUPER DESIGNER',           slug: 'sach-ai-super-designer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SUPER-DESIGNER-1.webp',                                                                                            desc: '' },
-      { name: 'AI SUPER ENGINEER',           slug: 'sach-ai-super-engineer-tap-1',       img: 'https://s4h.edu.vn/wp-content/uploads/2024/01/AI-SuperEngineer-1.webp',                                                                                             desc: '' },
-      { name: 'AI APPLICATION & EXPLORATION',slug: 'ai-application-exploration-1',       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcWRi5gPJBsjh6_ZZAWt_HebF84y9WusonCDc8SjKvNg&s=10', desc: '' },
+      { name: 'AI FANTASY ZOO',              slug: 'ai-fantasy-zoo-1', img: '/images/products/ai-fantasy-zoo-1-1-bee6e452a1.webp',                                                                                               desc: '' },
+      { name: 'AI MAGIC WORLD',              slug: 'sach-ai-magic-world',                img: '/images/products/sach-ai-magic-world-1-ef3af2618c.webp',                                                                                             desc: '' },
+      { name: 'AI SMART LIFE',               slug: 'ai-smart-life-1', img: '/images/products/ai-smart-life-1-1-e0680b789e.webp',                                                                                                desc: '' },
+      { name: 'AI SUPER ASSISTANT',          slug: 'ai-super-asistant-1', img: '/images/products/ai-super-asistant-1-1-c52ab7d235.webp',                                                                                         desc: '' },
+      { name: 'AI TRANSFORMER WORKSHOP',    slug: 'ai-transformer-workshop-1', img: '/images/products/ai-transformer-workshop-1-1-b8443267e8.webp',                                                                                      desc: '' },
+      { name: 'AI SUPER DESIGNER',           slug: 'ai-super-designer-1', img: '/images/products/ai-super-designer-1-1-1a7341ba65.webp',                                                                                            desc: '' },
+      { name: 'AI SUPER ENGINEER',           slug: 'ai-super-engineer-1', img: '/images/products/ai-super-engineer-1-1-0fbc1b1ef9.webp',                                                                                             desc: '' },
+      { name: 'AI APPLICATION & EXPLORATION',slug: 'ai-application-exploration-1',       img: '/images/products/ai-application-exploration-1-1-7b7c5a2eea.webp', desc: '' },
     ],
   },
 ];
@@ -258,9 +259,9 @@ export default function Header() {
           {/* ── Logo ── */}
           <Link href="/" className="flex-shrink-0 flex items-center group">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqfhqyaVMwIjSUwlvDADDX93fbyUNvXWGQbw&s"
+              src="/images/site/ubtech-logo-blue.svg"
               alt="UBTECH Vietnam"
-              className="h-14 w-auto object-contain transition-opacity group-hover:opacity-85"
+              className="h-7 w-auto object-contain transition-opacity group-hover:opacity-85"
               onError={(e: any) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
@@ -301,8 +302,8 @@ export default function Header() {
                       onClick={() => { setShowSuggest(false); setSearch(''); }}
                       className="flex items-center gap-3 px-4 py-3 hover:bg-[#F3F4F6] transition-colors"
                     >
-                      {img ? (
-                        <ProductImage src={img.url} alt={item.name} width={40} height={40} className="w-10 h-10 object-contain rounded-lg bg-gray-50" />
+                      {img || getBundledProductImages(item.slug).length > 0 ? (
+                        <ProductImage src={img?.url ?? ''} productSlug={item.slug} alt={item.name} width={40} height={40} className="w-10 h-10 object-contain" />
                       ) : (
                         <div className="w-10 h-10 rounded-lg bg-[#EEF3FF] flex items-center justify-center">
                           <Bot className="w-5 h-5 text-[#9CA3AF]" />
@@ -640,11 +641,13 @@ export default function Header() {
                             className="group flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-[#EEF3FF] transition-all"
                           >
                             <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-gray-50 group-hover:bg-white transition-colors overflow-hidden">
-                              <img
+                              <ProductImage
                                 src={item.img}
+                                productSlug={item.slug}
                                 alt={item.name}
+                                width={80}
+                                height={80}
                                 className="w-full h-full object-contain"
-                                onError={e => { (e.target as HTMLImageElement).style.opacity = '0.2'; }}
                               />
                             </div>
                             <div className="text-center">
@@ -823,7 +826,7 @@ export default function Header() {
                           onClick={() => setMobileOpen(false)}
                           className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-[#6B7280] hover:text-[#0057FF] hover:bg-[#EEF3FF] transition-colors"
                         >
-                          <img src={item.img} alt={item.name} className="w-6 h-6 object-contain rounded" />
+                          <ProductImage src={item.img} productSlug={item.slug} alt={item.name} width={24} height={24} className="w-6 h-6 object-contain rounded" />
                           <span className="flex-1">{item.name}</span>
                           {item.desc && (
                             <span className="text-[10px] text-[#9CA3AF]">{item.desc}</span>
