@@ -1,6 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -330,11 +331,12 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl">
-            <img
-              src="https://www.teq.com/wp-content/uploads/2025/04/UBTech_feature_reflect_04-25.png"
-              alt="Chương trình học AI Robotics UBTECH"
-              className="w-full object-cover"
-              style={{ maxHeight: 440 }}
+            <Image
+              src="/images/education/ubtech-stem-classroom.webp"
+              alt="Học sinh trải nghiệm robot hình người UBTECH trong phòng học STEM"
+              width={1200}
+              height={712}
+              className="h-auto w-full"
             />
           </div>
         </div>
