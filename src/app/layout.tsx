@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>{children}</Providers>
         {/* Floating contact buttons */}
-        <div className="fixed bottom-6 right-5 z-[999] flex flex-col items-end gap-3">
+        <div className="floating-contact fixed bottom-6 right-5 z-[999] flex flex-col items-end gap-3">
           <a href={`https://zalo.me/${ZALO}`} target="_blank" rel="noopener noreferrer"
             className="flex items-center justify-center w-12 h-12 rounded-full shadow-xl hover:scale-110 transition-transform"
             style={{ background: 'linear-gradient(135deg, #0068ff, #00c6ff)' }}
