@@ -17,6 +17,7 @@ import api from '@/lib/axios';
 
 const ZALO  = process.env.NEXT_PUBLIC_ZALO_PHONE || '0915594103';
 const PHONE = process.env.NEXT_PUBLIC_PHONE || ZALO;
+type DesktopMenu = 'solutions' | 'products' | 'about';
 
 interface SuggestItem {
   _id: string; name: string; slug: string;
@@ -165,8 +166,10 @@ export default function Header() {
   const [showSuggest, setShowSuggest] = useState(false);
   const [mobileOpen, setMobileOpen]   = useState(false);
   const [userOpen, setUserOpen]       = useState(false);
-  const [megaOpen, setMegaOpen]       = useState(false);
-  const [giaiPhapOpen, setGiaiPhapOpen] = useState(false);
+  const [desktopMenu, setDesktopMenu] = useState<DesktopMenu | null>(null);
+  const megaOpen = desktopMenu === 'products';
+  const giaiPhapOpen = desktopMenu === 'solutions';
+  const aboutOpen = desktopMenu === 'about';
   const [activeSection, setActiveSection] = useState(0);
   const [scrolled, setScrolled]       = useState(false);
   const [searchOpen, setSearchOpen]   = useState(false);
@@ -175,11 +178,9 @@ export default function Header() {
 
   const searchRef    = useRef<HTMLDivElement>(null);
   const userMenuRef  = useRef<HTMLDivElement>(null);
-  const megaRef      = useRef<HTMLDivElement>(null);
-  const giaiPhapRef  = useRef<HTMLDivElement>(null);
+  const desktopNavRef = useRef<HTMLDivElement>(null);
   const debounceRef  = useRef<ReturnType<typeof setTimeout>>();
-  const closeTimer   = useRef<ReturnType<typeof setTimeout>>();
-  const gpCloseTimer = useRef<ReturnType<typeof setTimeout>>();
+  const desktopCloseTimer = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => { if (user) fetchCart(); }, [user]);
   useEffect(() => {
@@ -192,11 +193,16 @@ export default function Header() {
       const t = e.target as Node;
       if (!searchRef.current?.contains(t))   setShowSuggest(false);
       if (!userMenuRef.current?.contains(t))  setUserOpen(false);
+      if (!desktopNavRef.current?.contains(t)) setDesktopMenu(null);
     };
     document.addEventListener('mousedown', fn);
     return () => document.removeEventListener('mousedown', fn);
   }, []);
-  useEffect(() => { setMobileOpen(false); setMegaOpen(false); setGiaiPhapOpen(false); }, [pathname]);
+  useEffect(() => {
+    setMobileOpen(false);
+    setDesktopMenu(null);
+    return () => clearTimeout(desktopCloseTimer.current);
+  }, [pathname]);
 
   const handleInput = (v: string) => {
     setSearch(v);
@@ -218,13 +224,16 @@ export default function Header() {
   };
   const handleLogout = async () => { await logout(); router.push('/dang-nhap'); };
 
-  /* Mega (Sản phẩm) */
-  const openMega  = () => { clearTimeout(closeTimer.current); setMegaOpen(true); };
-  const closeMega = () => { closeTimer.current = setTimeout(() => setMegaOpen(false), 100); };
-
-  /* Giải pháp dropdown */
-  const openGP  = () => { clearTimeout(gpCloseTimer.current); setGiaiPhapOpen(true); };
-  const closeGP = () => { gpCloseTimer.current = setTimeout(() => setGiaiPhapOpen(false), 120); };
+  const openDesktopMenu = (menu: DesktopMenu | null) => {
+    clearTimeout(desktopCloseTimer.current);
+    setDesktopMenu(menu);
+  };
+  const closeDesktopMenu = (menu: DesktopMenu) => {
+    clearTimeout(desktopCloseTimer.current);
+    desktopCloseTimer.current = setTimeout(() => {
+      setDesktopMenu(current => current === menu ? null : current);
+    }, 120);
+  };
 
   return (
     <>
@@ -445,16 +454,23 @@ export default function Header() {
             Desktop nav bar
         ═══════════════════════════════════════════════════ */}
         <div className="hidden lg:block border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-11">
+          <div
+            ref={desktopNavRef}
+            className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-11"
+            onKeyDown={event => {
+              if (event.key !== 'Escape' || !desktopMenu) return;
+              event.currentTarget.querySelector<HTMLButtonElement>('button[aria-expanded="true"]')?.focus();
+              openDesktopMenu(null);
+            }}
+          >
 
             {/* ── 1. GIẢI PHÁP dropdown ── */}
             <div
-              ref={giaiPhapRef}
               className="relative h-full flex items-center"
-              onMouseEnter={openGP}
-              onMouseLeave={closeGP}
+              onMouseEnter={() => openDesktopMenu('solutions')}
+              onMouseLeave={() => closeDesktopMenu('solutions')}
             >
-              <button className={cn(
+              <button type="button" aria-expanded={giaiPhapOpen} onClick={() => openDesktopMenu('solutions')} className={cn(
                 'flex items-center gap-1.5 px-4 h-11 text-[13px] font-semibold transition-colors border-b-2',
                 giaiPhapOpen
                   ? 'text-[#0057FF] border-[#0057FF]'
@@ -468,8 +484,6 @@ export default function Header() {
                 <div
                   className="absolute top-full left-0 mt-0 z-50"
                   style={{ width: '760px' }}
-                  onMouseEnter={openGP}
-                  onMouseLeave={closeGP}
                 >
                   <div className="bg-white rounded-b-2xl rounded-tr-2xl shadow-2xl border border-t-0 border-gray-100 overflow-hidden flex">
                     {/* ─ Sidebar tabs ─ */}
@@ -495,7 +509,7 @@ export default function Header() {
                       <div className="px-4 pt-4 mt-auto border-t border-white/10">
                         <Link
                           href="/lien-he"
-                          onClick={() => setGiaiPhapOpen(false)}
+                          onClick={() => openDesktopMenu(null)}
                           className="text-[11px] text-blue-300/60 hover:text-blue-200 flex items-center gap-1 transition-colors"
                         >
                           Nhận tư vấn <ArrowRight className="w-3 h-3" />
@@ -536,7 +550,7 @@ export default function Header() {
                                 <Link
                                   key={link.href}
                                   href={link.href}
-                                  onClick={() => setGiaiPhapOpen(false)}
+                                  onClick={() => openDesktopMenu(null)}
                                   className="flex items-center gap-2 px-3 py-2.5 rounded-xl hover:bg-[#F0F5FF] transition-all group/link"
                                 >
                                   <ChevronRight className="w-3.5 h-3.5 text-[#0057FF] opacity-50 group-hover/link:opacity-100 transition-opacity" />
@@ -550,7 +564,7 @@ export default function Header() {
                             {/* CTA */}
                             <Link
                               href={active.href}
-                              onClick={() => setGiaiPhapOpen(false)}
+                              onClick={() => openDesktopMenu(null)}
                               className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0057FF] text-white text-[12px] font-bold rounded-xl hover:bg-[#003DA5] transition-all shadow-sm shadow-blue-200"
                             >
                               Xem giải pháp {active.label}
@@ -567,12 +581,11 @@ export default function Header() {
 
             {/* ── 2. SẢN PHẨM mega menu ── */}
             <div
-              ref={megaRef}
               className="relative h-full flex items-center"
-              onMouseEnter={openMega}
-              onMouseLeave={closeMega}
+              onMouseEnter={() => openDesktopMenu('products')}
+              onMouseLeave={() => closeDesktopMenu('products')}
             >
-              <button className={cn(
+              <button type="button" aria-expanded={megaOpen} onClick={() => openDesktopMenu('products')} className={cn(
                 'flex items-center gap-1.5 px-4 h-11 text-[13px] font-semibold transition-colors border-b-2',
                 megaOpen
                   ? 'text-[#0057FF] border-[#0057FF]'
@@ -586,8 +599,6 @@ export default function Header() {
                 <div
                   className="absolute top-full left-0 mt-0 z-50"
                   style={{ width: '860px' }}
-                  onMouseEnter={openMega}
-                  onMouseLeave={closeMega}
                 >
                   <div className="bg-white rounded-b-2xl rounded-tr-2xl shadow-2xl border border-t-0 border-gray-100 overflow-hidden flex" style={{ maxHeight: '500px' }}>
                     {/* Sidebar */}
@@ -610,7 +621,7 @@ export default function Header() {
                       <div className="px-4 pt-4 mt-2 border-t border-white/10">
                         <Link
                           href="/san-pham"
-                          onClick={() => setMegaOpen(false)}
+                          onClick={() => openDesktopMenu(null)}
                           className="text-[11px] text-blue-300/60 hover:text-blue-200 flex items-center gap-1 transition-colors"
                         >
                           Tất cả SP <ArrowRight className="w-3 h-3" />
@@ -626,7 +637,7 @@ export default function Header() {
                         </h3>
                         <Link
                           href="/san-pham"
-                          onClick={() => setMegaOpen(false)}
+                          onClick={() => openDesktopMenu(null)}
                           className="text-[11px] text-[#0057FF] font-semibold hover:underline"
                         >
                           Xem tất cả →
@@ -637,7 +648,7 @@ export default function Header() {
                           <Link
                             key={item.slug}
                             href={`/san-pham/${item.slug}`}
-                            onClick={() => setMegaOpen(false)}
+                            onClick={() => openDesktopMenu(null)}
                             className="group flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-[#EEF3FF] transition-all"
                           >
                             <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-gray-50 group-hover:bg-white transition-colors overflow-hidden">
@@ -668,6 +679,7 @@ export default function Header() {
             {/* ── 3. DỰ ÁN ── */}
             <Link
               href="/giai-phap-robot"
+              onMouseEnter={() => openDesktopMenu(null)}
               className={cn(
                 'px-4 h-11 flex items-center text-[13px] font-semibold transition-colors border-b-2',
                 pathname === '/giai-phap-robot'
@@ -681,17 +693,17 @@ export default function Header() {
             {/* ── 4. Plain nav ── */}
             {PLAIN_NAV.map(item => (
               (item as any).dropdown ? (
-                <div key={item.label} className="relative group/nav">
-                  <button className={cn(
+                <div key={item.label} className="relative" onMouseEnter={() => openDesktopMenu('about')} onMouseLeave={() => closeDesktopMenu('about')}>
+                  <button type="button" aria-expanded={aboutOpen} onClick={() => openDesktopMenu('about')} className={cn(
                     'px-4 h-11 flex items-center gap-1 text-[13px] font-semibold transition-colors border-b-2',
                     ['/gioi-thieu', '/cong-nghe', '/phan-mem', '/ai-center'].some(p => pathname === p)
                       ? 'text-[#0057FF] border-[#0057FF]'
                       : 'text-[#374151] hover:text-[#0057FF] border-transparent'
                   )}>
                     {item.label}
-                    <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover/nav:rotate-180 transition-transform duration-200" />
+                    <ChevronDown className={cn('w-3.5 h-3.5 opacity-60 transition-transform duration-200', aboutOpen && 'rotate-180')} />
                   </button>
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50">
+                  {aboutOpen && <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
                     <div className="bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] border border-gray-100 p-2 w-52">
                       {((item as any).dropdown as { label: string; href: string; desc: string }[]).map(sub => (
                         <Link
@@ -706,12 +718,13 @@ export default function Header() {
                         </Link>
                       ))}
                     </div>
-                  </div>
+                  </div>}
                 </div>
               ) : (
                 <Link
                   key={item.label}
                   href={item.href}
+                  onMouseEnter={() => openDesktopMenu(null)}
                   className={cn(
                     'px-4 h-11 flex items-center text-[13px] font-semibold transition-colors border-b-2',
                     pathname === item.href
