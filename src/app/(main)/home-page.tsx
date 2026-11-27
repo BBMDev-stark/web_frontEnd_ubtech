@@ -30,6 +30,7 @@ import {
 import api from "@/lib/axios";
 import ProductCard from "@/components/ui/ProductCard";
 import HeroApple from "@/components/ui/HeroApple";
+import LatestWordPressNews from "@/components/ui/LatestWordPressNews";
 
 const ZALO = process.env.NEXT_PUBLIC_ZALO_PHONE || "0915594103";
 const PHONE = process.env.NEXT_PUBLIC_PHONE || ZALO;
@@ -644,11 +645,7 @@ export default function HomePage({ skipIntro = false }: { skipIntro?: boolean })
               Xem thêm <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
-          <a href="https://cms.ubtechvietnam.edu.vn/" className="block rounded-2xl bg-blue-50 border border-blue-100 p-8 group">
-            <h3 className="text-xl font-bold text-[#1A1F36] mb-3">Khám phá tin tức UBTECH Việt Nam</h3>
-            <p className="text-gray-600 mb-5">Đọc các bài viết, sự kiện và kiến thức mới nhất về AI & Robotics.</p>
-            <span className="inline-flex items-center gap-2 font-semibold text-[#0057FF]">Đến trang tin tức <ArrowRight className="w-4 h-4" /></span>
-          </a>
+          <LatestWordPressNews />
         </div>
       </section>
 
