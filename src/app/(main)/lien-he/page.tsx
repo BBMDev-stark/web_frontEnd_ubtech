@@ -1,17 +1,59 @@
 'use client';
 import { useState } from 'react';
+import { isAxiosError } from 'axios';
 import { Phone, MessageCircle, Mail, MapPin, Clock, CheckCircle2 } from 'lucide-react';
+import api from '@/lib/axios';
 
 const PHONE = process.env.NEXT_PUBLIC_PHONE || '0915594103';
 const ZALO  = process.env.NEXT_PUBLIC_ZALO_PHONE || '0915594103';
+const CONTACT_EMAIL = 'ubtechvietnam@ipptech.com.vn';
+const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY?.trim();
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({ name: '', phone: '', email: '', subject: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    if (sending) return;
+
+    setSending(true);
+    setError('');
+    try {
+      if (WEB3FORMS_ACCESS_KEY) {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            ...form,
+            subject: form.subject.trim() || 'Yêu cầu tư vấn từ UBTECH Việt Nam',
+            access_key: WEB3FORMS_ACCESS_KEY,
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok || data?.success !== true) {
+          if (response.status === 429) {
+            setError('Bạn đã gửi quá nhiều yêu cầu. Vui lòng thử lại sau.');
+            return;
+          }
+          throw new Error('Web3Forms did not accept the contact request');
+        }
+      } else {
+        const { data } = await api.post<{ success?: boolean }>('/contact', form);
+        if (data?.success !== true) throw new Error('Contact request was not accepted');
+      }
+      setSent(true);
+    } catch (err) {
+      const response = isAxiosError<{ message?: string }>(err) ? err.response : undefined;
+      const message = response && [400, 429, 502, 503].includes(response.status)
+        ? response.data?.message
+        : undefined;
+      setError(message || 'Chưa thể gửi yêu cầu. Vui lòng thử lại hoặc liên hệ qua hotline.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -33,7 +75,7 @@ export default function ContactPage() {
               {[
                 { icon: Phone, label: 'Hotline', value: PHONE, href: `tel:${PHONE}`, color: 'bg-blue-50 text-blue-600' },
                 { icon: MessageCircle, label: 'Zalo', value: ZALO, href: `https://zalo.me/${ZALO}`, color: 'bg-green-50 text-green-600' },
-                { icon: Mail, label: 'Email', value: 'info@ubtechvietnam.edu.vn', href: 'mailto:info@ubtechvietnam.edu.vn', color: 'bg-purple-50 text-purple-600' },
+                { icon: Mail, label: 'Email', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}`, color: 'bg-purple-50 text-purple-600' },
                 { icon: MapPin, label: 'Địa chỉ', value: 'TP. Hồ Chí Minh, Việt Nam', href: null, color: 'bg-orange-50 text-orange-600' },
                 { icon: Clock, label: 'Giờ làm việc', value: 'Thứ 2 – Thứ 7: 8:00 – 18:00', href: null, color: 'bg-gray-50 text-gray-600' },
               ].map(item => (
@@ -74,38 +116,43 @@ export default function ContactPage() {
                 <p className="text-[#6B7280]">Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {[
-                  { field: 'name', label: 'Họ và tên *', type: 'text', placeholder: 'Nguyễn Văn A', required: true },
-                  { field: 'phone', label: 'Số điện thoại *', type: 'tel', placeholder: '0912 345 678', required: true },
-                  { field: 'email', label: 'Email', type: 'email', placeholder: 'example@email.com', required: false },
-                  { field: 'subject', label: 'Chủ đề', type: 'text', placeholder: 'Tư vấn sản phẩm / Hợp tác...', required: false },
-                ].map(item => (
+              <form onSubmit={handleSubmit} className="space-y-4" aria-busy={sending}>
+                {([
+                  { field: 'name', label: 'Họ và tên *', type: 'text', placeholder: 'Nguyễn Văn A', required: true, maxLength: 120 },
+                  { field: 'phone', label: 'Số điện thoại *', type: 'tel', placeholder: '0912 345 678', required: true, maxLength: 30 },
+                  { field: 'email', label: 'Email', type: 'email', placeholder: 'example@email.com', required: false, maxLength: 254 },
+                  { field: 'subject', label: 'Chủ đề', type: 'text', placeholder: 'Tư vấn sản phẩm / Hợp tác...', required: false, maxLength: 160 },
+                ] as const).map(item => (
                   <div key={item.field}>
-                    <label className="block text-sm font-semibold text-[#374151] mb-1.5">{item.label}</label>
+                    <label htmlFor={`contact-${item.field}`} className="block text-sm font-semibold text-[#374151] mb-1.5">{item.label}</label>
                     <input
+                      id={`contact-${item.field}`}
                       type={item.type}
                       placeholder={item.placeholder}
                       required={item.required}
-                      value={(form as any)[item.field]}
+                      maxLength={item.maxLength}
+                      value={form[item.field]}
                       onChange={e => setForm(f => ({ ...f, [item.field]: e.target.value }))}
                       className="w-full px-4 py-3 border border-[#E8EBF0] rounded-xl text-sm focus:outline-none focus:border-[#0057FF] transition-colors"
                     />
                   </div>
                 ))}
                 <div>
-                  <label className="block text-sm font-semibold text-[#374151] mb-1.5">Nội dung</label>
+                  <label htmlFor="contact-message" className="block text-sm font-semibold text-[#374151] mb-1.5">Nội dung</label>
                   <textarea
+                    id="contact-message"
                     placeholder="Mô tả nhu cầu của bạn..."
                     rows={4}
+                    maxLength={3000}
                     value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     className="w-full px-4 py-3 border border-[#E8EBF0] rounded-xl text-sm focus:outline-none focus:border-[#0057FF] transition-colors resize-none"
                   />
                 </div>
-                <button type="submit"
-                  className="w-full py-3.5 bg-[#0057FF] text-white font-bold rounded-xl hover:bg-[#003DA5] transition-colors shadow-lg shadow-blue-200 text-sm">
-                  Gửi yêu cầu tư vấn
+                {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
+                <button type="submit" disabled={sending}
+                  className="w-full py-3.5 bg-[#0057FF] text-white font-bold rounded-xl hover:bg-[#003DA5] disabled:opacity-60 transition-colors shadow-lg shadow-blue-200 text-sm">
+                  {sending ? 'Đang gửi…' : 'Gửi yêu cầu tư vấn'}
                 </button>
               </form>
             )}
