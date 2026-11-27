@@ -1,5 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  redirects() {
+    return [
+      {
+        source: '/',
+        has: [{ type: 'header', key: 'referer', value: 'https://cms\\.ubtechvietnam\\.edu\\.vn(?:/.*)?' }],
+        destination: '/trang-chu',
+        permanent: false,
+      },
+    ];
+  },
   images: {
     // Tắt optimization để ảnh từ nhiều nguồn hiển thị được
     unoptimized: true,
