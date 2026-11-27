@@ -545,6 +545,8 @@ img.product-img-zoom {
   display: contents;
 }
 .hap[data-intro]:not([data-intro="open"]) {
+  position: fixed;
+  inset: 0;
   height: 100svh;
   background: #0d1b3e;
 }
@@ -1186,7 +1188,7 @@ body:has(.hap[data-intro]:not([data-intro="open"])) :is(.site-header, .floating-
 .hap-curtain-fold-front {
   transition: opacity 100ms ease-out calc(var(--hap-reach-time) + 80ms);
 }
-.hap[data-revealing] .hap-curtain-fold {
+.hap[data-intro="pulling"] .hap-curtain-fold {
   opacity: 1;
 }
 .hap-hand-wrist { transform-origin: 141px 224px; }
@@ -1204,24 +1206,24 @@ body:has(.hap[data-intro]:not([data-intro="open"])) :is(.site-header, .floating-
   visibility: visible;
   animation: hap-curtain-pull 920ms cubic-bezier(0.5, 0, 0.36, 1) var(--hap-pull-delay) both;
 }
-.hap[data-revealing] .hap-arm {
+.hap[data-intro="pulling"] .hap-arm {
   animation: hap-arm-reach var(--hap-reach-time) cubic-bezier(0.22, 0.7, 0.28, 1) both;
 }
-.hap[data-revealing] .hap-hand-wrist {
+.hap[data-intro="pulling"] .hap-hand-wrist {
   animation: hap-hand-straighten var(--hap-reach-time) ease-out both;
 }
-.hap[data-revealing] .hap-hand-digit {
+.hap[data-intro="pulling"] .hap-hand-digit {
   animation: hap-hand-close var(--hap-grip-time) ease-in-out var(--hap-reach-time) both;
 }
-.hap[data-revealing] .hap-hand-fingertip {
+.hap[data-intro="pulling"] .hap-hand-fingertip {
   animation: hap-hand-curl var(--hap-grip-time) ease-in-out var(--hap-reach-time) both;
 }
-.hap[data-revealing] .hap-hand-thumb {
+.hap[data-intro="pulling"] .hap-hand-thumb {
   animation: hap-hand-thumb-close var(--hap-grip-time) ease-in-out var(--hap-reach-time) both;
 }
 @keyframes hap-curtain-pull {
   from { transform: translateY(0); }
-  to { transform: translateY(100%); visibility: hidden; }
+  to { transform: translateY(100%); }
 }
 @keyframes hap-arm-reach {
   from { transform: translate3d(0, calc(105% + var(--hap-hand-lift)), 0); }
@@ -1243,7 +1245,23 @@ body:has(.hap[data-intro]:not([data-intro="open"])) :is(.site-header, .floating-
   from { transform: rotate(15deg); }
   to { transform: rotate(-27deg); }
 }
+@keyframes hap-curtain-fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 @media (prefers-reduced-motion: reduce) {
+  .hap[data-intro="pulling"] :is(.hap-panel, .hap-arm-track) {
+    animation: hap-curtain-fade 220ms ease-out 480ms both;
+  }
+  .hap[data-intro="pulling"] :is(.hap-arm, .hap-hand-wrist, .hap-hand-digit, .hap-hand-fingertip, .hap-hand-thumb) {
+    animation: none;
+  }
+  .hap[data-intro="pulling"] .hap-arm {
+    transform: var(--hap-hand-contact);
+  }
+  .hap[data-intro="pulling"] .hap-curtain-fold {
+    transition: none;
+  }
   .hap-opening-visual:has(.hap-walker-control:enabled:is(:hover, :focus-visible)) {
     --hap-walker-scale: 1;
   }
