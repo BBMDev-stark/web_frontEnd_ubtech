@@ -77,7 +77,7 @@ export default function ContactPage() {
                 { icon: MessageCircle, label: 'Zalo', value: ZALO, href: `https://zalo.me/${ZALO}`, color: 'bg-green-50 text-green-600' },
                 { icon: Mail, label: 'Email', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}`, color: 'bg-purple-50 text-purple-600' },
                 { icon: MapPin, label: 'Địa chỉ', value: 'TP. Hồ Chí Minh, Việt Nam', href: null, color: 'bg-orange-50 text-orange-600' },
-                { icon: Clock, label: 'Giờ làm việc', value: 'Thứ 2 – Thứ 7: 8:00 – 18:00', href: null, color: 'bg-gray-50 text-gray-600' },
+                { icon: Clock, label: 'Giờ làm việc', value: 'Thứ 2 – Thứ 6: 8:00 – 18:00', href: null, color: 'bg-gray-50 text-gray-600' },
               ].map(item => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className={`w-11 h-11 rounded-xl ${item.color} flex items-center justify-center flex-shrink-0`}>
