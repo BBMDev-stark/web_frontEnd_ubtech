@@ -7,6 +7,7 @@ const fingers = [
 
 // The panel and foreground render the same hem in the hand's contact pose.
 const curtainHem = "M22 64C48 78 68 89 86 85C101 82 109 69 121 64C131 60 140 56 151 56C167 57 174 68 185 71C208 78 232 73 258 59";
+const backplate = "m89 146 10-9 28-9 30 2 21 11 2 14-12 18-27 11-27-8-19-13Z";
 
 export function HeroCurtainFold({ foreground = false }: { foreground?: boolean }) {
   return (
@@ -61,6 +62,18 @@ export default function HeroRobotArm() {
               <stop offset=".41" stopColor="#389dd4" />
               <stop offset="1" stopColor="#275287" />
             </linearGradient>
+            <filter id="hero-hand-logo-ink" colorInterpolationFilters="sRGB">
+              <feFlood floodColor="#063d64" result="ink" />
+              <feComposite in="ink" in2="SourceAlpha" operator="in" />
+            </filter>
+            <clipPath id="hero-hand-backplate-clip">
+              <path d={backplate} />
+            </clipPath>
+            <linearGradient id="hero-hand-brand-glint">
+              <stop stopColor="#b9e9ff" stopOpacity="0" />
+              <stop offset=".55" stopColor="#f1fbff" stopOpacity=".72" />
+              <stop offset="1" stopColor="#b9e9ff" stopOpacity="0" />
+            </linearGradient>
           </defs>
 
           {/* Forearm shell and wrist coupling */}
@@ -68,6 +81,10 @@ export default function HeroRobotArm() {
           <path d="M63 490 105 248l21-19 38 2 20 21 24 238Z" fill="url(#hero-hand-shell)" stroke="#9db5c9" strokeWidth="2" />
           <path d="m105 297 10-43 15-13 31 1 14 15 6 26-11 11-46 1Z" fill="#274463" />
           <path d="m115 283 7-25 12-9 23 1 11 12 4 17-7 5Z" fill="url(#hero-hand-blue)" />
+          <g transform="rotate(3 144 268)">
+            <rect x="122" y="260" width="44" height="15" rx="4" fill="#143853" opacity=".9" />
+            <image className="hap-wrist-logo" href="/images/site/ubtech-logo.svg" x="127" y="263" width="34" height="9" opacity=".94" />
+          </g>
           <path d="m96 319 7-29m84-1 5 32" fill="none" stroke="#eff8ff" strokeWidth="2" />
           <path d="M112 219h55v24l-10 10h-33l-12-10Z" fill="url(#hero-hand-frame)" stroke="#7f9bb5" strokeWidth="2" />
           <path d="M120 232h40m-34 8h29" stroke="#7090ad" strokeWidth="2" strokeLinecap="round" />
@@ -101,8 +118,20 @@ export default function HeroRobotArm() {
             <path d="m69 119 13-9 22 4 19-9 25 2 19 3 22 4 13 13 7 24-7 31-20 23-14 20-12 8-30-3-19-12-24-22-14-29-4-32Z" fill="url(#hero-hand-frame)" stroke="#7793af" strokeWidth="2" />
             <path d="m78 121 9-5 17 6 20-10 23 2 19 3 20 5 12 13-5 34-14 22-24 24-29-3-34-22-14-23-5-32Z" fill="url(#hero-hand-shell)" stroke="#9fb7ce" strokeWidth="2" />
             <path d="m86 147 9-11 30-11 34 2 23 12 2 20-12 18-31 13-28-9-20-13Z" fill="#67819f" />
-            <path d="m89 146 10-9 28-9 30 2 21 11 2 14-12 18-27 11-27-8-19-13Z" fill="url(#hero-hand-shell)" stroke="#edf8ff" strokeWidth="1.5" />
-            <path d="m122 151 24-5 16 7-3 5-15-4-20 4Z" fill="url(#hero-hand-blue)" />
+            <path d={backplate} fill="url(#hero-hand-shell)" stroke="#edf8ff" strokeWidth="1.5" />
+            <image
+              className="hap-hand-logo"
+              href="/images/site/ubtech-logo-blue.svg"
+              x="99"
+              y="146"
+              width="72"
+              height="18"
+              transform="rotate(4 135 155)"
+              filter="url(#hero-hand-logo-ink)"
+            />
+            <g clipPath="url(#hero-hand-backplate-clip)">
+              <path className="hap-hand-logo-glint" d="M59 119h26l-16 75H43Z" fill="url(#hero-hand-brand-glint)" opacity="0" />
+            </g>
             <path d="M96 188l17 12m47 3 15-12" stroke="#6b86a2" strokeWidth="2" strokeLinecap="round" />
             <path d="m113 216 15 9 28 2 13-11-12 18-22 5-21-10Z" fill="url(#hero-hand-blue)" stroke="#375e86" strokeWidth="1.5" />
             <circle cx="85" cy="135" r="2.5" fill="#38526d" />
